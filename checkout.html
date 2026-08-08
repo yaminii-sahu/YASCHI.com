@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Yaschi</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #e2e8e4;
+            font-family: Arial, sans-serif;
+            color: #555;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #fffaf8;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px lightgray;
+        }
+
+        .logo {
+            color: #cfa7b5;
+            font-family: Georgia, serif;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        header a {
+            color: #cfa7b5;
+            text-decoration: none;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 35px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #9fb7aa;
+            font-family: Georgia, serif;
+            margin-bottom: 30px;
+        }
+
+        .checkout {
+            display: flex;
+            gap: 25px;
+        }
+
+        /* LEFT SIDE */
+
+        .left {
+            flex: 2;
+        }
+
+        .box {
+            background: #fffaf8;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px lightgray;
+        }
+
+        .box h2 {
+            color: #cfa7b5;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d8b4b6;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border: 2px solid #9fb7aa;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        /* PAYMENT */
+
+        .payment-option {
+            margin-top: 15px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .payment-option input {
+            width: auto;
+        }
+
+        /* RIGHT SIDE */
+
+        .right {
+            flex: 1;
+        }
+
+        .summary {
+            background: #fffaf8;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px lightgray;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary h2 {
+            color: #cfa7b5;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+
+        .total {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #9fb7aa;
+        }
+
+        .place-order {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 25px;
+            background: #d8b4b6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .place-order:hover {
+            background: #9fb7aa;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin: 25px;
+            color: #cfa7b5;
+            text-decoration: none;
+        }
+
+        /* MESSAGE */
+
+        #message {
+            text-align: center;
+            color: #6d9b78;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 700px) {
+
+            .checkout {
+                flex-direction: column;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        YASCHI
+    </div>
+
+    <a href="cart.html">
+        ← Back to Cart
+    </a>
+
+</header>
+
+
+<div class="container">
+
+    <h1>♡ Checkout ♡</h1>
+
+
+    <div class="checkout">
+
+
+        <!-- LEFT -->
+
+        <div class="left">
+
+
+            <!-- DELIVERY -->
+
+            <div class="box">
+
+                <h2>Delivery Address</h2>
+
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                >
+
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number"
+                >
+
+
+                <label>Address</label>
+
+                <input
+                    type="text"
+                    id="address"
+                    placeholder="House no., Street, Area"
+                >
+
+
+                <div class="row">
+
+                    <div>
+
+                        <label>City</label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="City"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>PIN Code</label>
+
+                        <input
+                            type="text"
+                            id="pin"
+                            placeholder="PIN Code"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="box">
+
+                <h2>Payment Method</h2>
+
+
+                <div class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="cod"
+                        checked
+                    >
+
+                    Cash on Delivery
+
+                </div>
+
+
+                <div class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="upi"
+                    >
+
+                    UPI
+
+                </div>
+
+
+                <div class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="card"
+                    >
+
+                    Credit / Debit Card
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="right">
+
+            <div class="summary">
+
+                <h2>Order Summary</h2>
+
+
+                <div class="summary-row">
+
+                    <span>Items</span>
+
+                    <span id="items">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>Subtotal</span>
+
+                    <span id="subtotal">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>Delivery</span>
+
+                    <span>
+                        FREE
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row total">
+
+                    <span>Total</span>
+
+                    <span id="total">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="place-order"
+                    id="placeOrder"
+                >
+
+                    Place Order
+
+                </button>
+
+
+                <p id="message"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <a href="index.html" class="back">
+        ← Continue Shopping
+    </a>
+
+</div>
+
+
+<script>
+
+
+// GET CART
+
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+
+// CALCULATE TOTAL
+
+let totalItems = 0;
+
+let totalPrice = 0;
+
+
+for (let i = 0; i < cart.length; i++) {
+
+    totalItems =
+        totalItems + Number(cart[i].quantity);
+
+    totalPrice =
+        totalPrice +
+        Number(cart[i].price) *
+        Number(cart[i].quantity);
+
+}
+
+
+// SHOW SUMMARY
+
+document.getElementById("items").innerHTML =
+    totalItems;
+
+document.getElementById("subtotal").innerHTML =
+    "₹" + totalPrice;
+
+document.getElementById("total").innerHTML =
+    "₹" + totalPrice;
+
+
+// PLACE ORDER
+
+document.getElementById("placeOrder").onclick =
+function () {
+
+
+    let name =
+        document.getElementById("name").value;
+
+    let phone =
+        document.getElementById("phone").value;
+
+    let address =
+        document.getElementById("address").value;
+
+    let city =
+        document.getElementById("city").value;
+
+    let pin =
+        document.getElementById("pin").value;
+
+
+    if (
+        name == "" ||
+        phone == "" ||
+        address == "" ||
+        city == "" ||
+        pin == ""
+    ) {
+
+        alert("Please fill all delivery details.");
+
+        return;
+
+    }
+
+
+    if (cart.length == 0) {
+
+        alert("Your cart is empty.");
+
+        return;
+
+    }
+
+
+    document.getElementById("message").innerHTML =
+        "✓ Order placed successfully! ♡";
+
+
+    // Empty cart
+
+    localStorage.removeItem("cart");
+
+};
+
+</script>
+
+
+</body>
+
+</html>

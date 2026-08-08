@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Returns & Orders | Yaschi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            background-color: #e2e8e4;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #555;
+        }
+
+        /* Header */
+
+        .orders-header {
+            background-color: #fffaf8;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .orders-logo {
+            width: 100px;
+            height: 70px;
+            background-image: url("Yaschi_logo.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-icons a {
+            color: #cfa7b5;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 20px;
+        }
+
+        /* Main */
+
+        .orders-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .orders-title {
+            text-align: center;
+            color: #9fb7aa;
+            font-family: Georgia, serif;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 35px;
+        }
+
+        /* Search */
+
+        .order-search {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .order-search input {
+            width: 350px;
+            padding: 12px;
+            border: 1px solid #d8b4b6;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+        }
+
+        .order-search button {
+            padding: 12px 20px;
+            border: none;
+            background-color: #d8b4b6;
+            color: white;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        /* Order Box */
+
+        .order {
+            background-color: #fffaf8;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .order-top {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+        .order-number {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .order-date {
+            color: #888;
+        }
+
+        .order-content {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .order-content img {
+            width: 120px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .order-details {
+            margin-left: 25px;
+        }
+
+        .order-details h2 {
+            color: #555;
+            margin-top: 0;
+        }
+
+        .price {
+            color: #cfa7b5;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .status {
+            color: #6d9b78;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+
+        .order-buttons {
+            margin-top: 15px;
+        }
+
+        .order-buttons button {
+            padding: 10px 18px;
+            margin-right: 8px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .track {
+            background-color: #9fb7aa;
+            color: white;
+        }
+
+        .return {
+            background-color: #d8b4b6;
+            color: white;
+        }
+
+        .details-btn {
+            background-color: white;
+            border: 1px solid #d8b4b6 !important;
+            color: #cfa7b5;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin: 35px;
+            color: #cfa7b5;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+
+        @media(max-width:600px) {
+
+            .orders-header {
+                padding: 0 15px;
+            }
+
+            .orders-container {
+                width: 95%;
+            }
+
+            .order-content {
+                align-items: flex-start;
+            }
+
+            .order-content img {
+                width: 90px;
+                height: 110px;
+            }
+
+            .order-details {
+                margin-left: 15px;
+            }
+
+            .order-details h2 {
+                font-size: 18px;
+            }
+
+            .order-top {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- Header -->
+
+<header class="orders-header">
+
+    <a href="index.html">
+
+        <div class="orders-logo"></div>
+
+    </a>
+
+    <div class="header-icons">
+
+        <a href="signin.html">
+            <i class="fa-solid fa-user"></i>
+        </a>
+
+        <a href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- Main -->
+
+<div class="orders-container">
+
+    <h1 class="orders-title">
+        Returns & Orders
+    </h1>
+
+    <p class="subtitle">
+        View your orders and manage your returns ♡
+    </p>
+
+
+    <!-- Search -->
+
+    <div class="order-search">
+
+        <input
+            type="text"
+            id="orderSearch"
+            placeholder="Search your orders"
+        >
+
+        <button id="searchButton">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Order 1 -->
+
+    <div class="order">
+
+        <div class="order-top">
+
+            <span class="order-number">
+                Order #YAS001
+            </span>
+
+            <span class="order-date">
+                8 August 2026
+            </span>
+
+        </div>
+
+
+        <div class="order-content">
+
+            <img src="corset1.jpeg" alt="Floral Corset">
+
+
+            <div class="order-details">
+
+                <h2>
+                    Floral Corset
+                </h2>
+
+                <p>
+                    Quantity: 1
+                </p>
+
+                <p class="price">
+                    ₹1999
+                </p>
+
+                <p class="status">
+                    ✓ Delivered
+                </p>
+
+                <div class="order-buttons">
+
+                    <button class="details-btn">
+                        View Details
+                    </button>
+
+                    <button class="return">
+                        Return Item
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Order 2 -->
+
+    <div class="order">
+
+        <div class="order-top">
+
+            <span class="order-number">
+                Order #YAS002
+            </span>
+
+            <span class="order-date">
+                5 August 2026
+            </span>
+
+        </div>
+
+
+        <div class="order-content">
+
+            <img src="corset2.jpeg" alt="Victorian Corset">
+
+
+            <div class="order-details">
+
+                <h2>
+                    Victorian Corset
+                </h2>
+
+                <p>
+                    Quantity: 2
+                </p>
+
+                <p class="price">
+                    ₹4598
+                </p>
+
+                <p class="status">
+                    🚚 Out for Delivery
+                </p>
+
+                <div class="order-buttons">
+
+                    <button class="track">
+                        Track Order
+                    </button>
+
+                    <button class="details-btn">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- No Orders -->
+
+    <div id="noOrders" style="display:none; text-align:center;">
+
+        <h2>
+            No orders found ♡
+        </h2>
+
+        <p>
+            Try searching with a different order name or number.
+        </p>
+
+    </div>
+
+
+    <a href="index.html" class="back-home">
+
+        ← Continue Shopping
+
+    </a>
+
+</div>
+
+
+<script>
+
+    /* Search Orders */
+
+    let search = document.getElementById("orderSearch");
+
+    search.addEventListener("keyup", function() {
+
+        let value = search.value.toLowerCase();
+
+        let orders = document.getElementsByClassName("order");
+
+        let found = false;
+
+        for(let i = 0; i < orders.length; i++) {
+
+            let text = orders[i].innerText.toLowerCase();
+
+            if(text.includes(value)) {
+
+                orders[i].style.display = "block";
+
+                found = true;
+
+            }
+            else {
+
+                orders[i].style.display = "none";
+
+            }
+
+        }
+
+        if(found == false) {
+
+            document.getElementById("noOrders").style.display = "block";
+
+        }
+        else {
+
+            document.getElementById("noOrders").style.display = "none";
+
+        }
+
+    });
+
+
+    /* Return Button */
+
+    let returnButtons = document.querySelectorAll(".return");
+
+    for(let i = 0; i < returnButtons.length; i++) {
+
+        returnButtons[i].onclick = function() {
+
+            alert("Your return request has been submitted.");
+
+        };
+
+    }
+
+
+    /* View Details */
+
+    let detailsButtons = document.querySelectorAll(".details-btn");
+
+    for(let i = 0; i < detailsButtons.length; i++) {
+
+        detailsButtons[i].onclick = function() {
+
+            alert("Order details will be displayed here.");
+
+        };
+
+    }
+
+</script>
+
+</body>
+
+</html>

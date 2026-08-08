@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search | YASCHI</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            background: #e2e8e4;
+            font-family: Arial, sans-serif;
+        }
+
+        .search-page {
+            width: 80%;
+            max-width: 700px;
+            margin: 80px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #9FB7AA;
+            font-family: Georgia, serif;
+            font-size: 40px;
+        }
+
+        .search-box {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #d8b4b6;
+            border-radius: 25px 0 0 25px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            width: 60px;
+            border: none;
+            background: #d8b4b6;
+            color: white;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            color: #cfa7b5;
+            text-decoration: none;
+        }
+
+        #result {
+            margin-top: 30px;
+            color: #666;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="search-page">
+
+        <h1>Search YASCHI</h1>
+
+        <p>Find your favourite fashion pieces ♡</p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for corsets, dresses, makeup..."
+            >
+
+            <button onclick="searchProduct()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+        <a href="index.html" class="back">
+            ← Back to YASCHI
+        </a>
+
+    </div>
+
+
+    <script>
+
+        function searchProduct() {
+
+            let search =
+                document.getElementById("searchInput").value;
+
+            let result =
+                document.getElementById("result");
+
+
+            if (search == "") {
+
+                result.innerHTML =
+                    "Please enter something to search.";
+
+            }
+
+            else {
+
+                result.innerHTML =
+                    "Searching for: <b>" + search + "</b>";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
