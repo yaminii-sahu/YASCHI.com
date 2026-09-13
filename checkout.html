@@ -1,552 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Checkout | Yaschi</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: #e2e8e4;
-            font-family: Arial, sans-serif;
-            color: #555;
-        }
-
-        /* HEADER */
-
-        header {
-            background: #fffaf8;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px lightgray;
-        }
-
-        .logo {
-            color: #cfa7b5;
-            font-family: Georgia, serif;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        header a {
-            color: #cfa7b5;
-            text-decoration: none;
-        }
-
-        /* MAIN */
-
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 35px auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: #9fb7aa;
-            font-family: Georgia, serif;
-            margin-bottom: 30px;
-        }
-
-        .checkout {
-            display: flex;
-            gap: 25px;
-        }
-
-        /* LEFT SIDE */
-
-        .left {
-            flex: 2;
-        }
-
-        .box {
-            background: #fffaf8;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px lightgray;
-        }
-
-        .box h2 {
-            color: #cfa7b5;
-            margin-top: 0;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d8b4b6;
-            border-radius: 7px;
-            outline: none;
-        }
-
-        input:focus,
-        select:focus {
-            border: 2px solid #9fb7aa;
-        }
-
-        .row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .row div {
-            flex: 1;
-        }
-
-        /* PAYMENT */
-
-        .payment-option {
-            margin-top: 15px;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .payment-option input {
-            width: auto;
-        }
-
-        /* RIGHT SIDE */
-
-        .right {
-            flex: 1;
-        }
-
-        .summary {
-            background: #fffaf8;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px lightgray;
-            position: sticky;
-            top: 20px;
-        }
-
-        .summary h2 {
-            color: #cfa7b5;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin: 15px 0;
-        }
-
-        .total {
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #9fb7aa;
-        }
-
-        .place-order {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 25px;
-            background: #d8b4b6;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        .place-order:hover {
-            background: #9fb7aa;
-        }
-
-        .back {
-            display: block;
-            text-align: center;
-            margin: 25px;
-            color: #cfa7b5;
-            text-decoration: none;
-        }
-
-        /* MESSAGE */
-
-        #message {
-            text-align: center;
-            color: #6d9b78;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        /* MOBILE */
-
-        @media(max-width: 700px) {
-
-            .checkout {
-                flex-direction: column;
-            }
-
-            header {
-                padding: 15px 20px;
-            }
-
-            .container {
-                width: 95%;
-            }
-
-            .row {
-                flex-direction: column;
-                gap: 0;
-            }
-
-        }
-
-    </style>
-
+    <title>Secure Checkout | Yaschi</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="top-nav">
+            <!-- Mobile Menu Hamburger Button -->
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-<!-- HEADER -->
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="Yaschi Home">
+                <img src="Yaschi_logo.png" alt="Yaschi Logo" class="logo-img">
+            </a>
 
-<header>
-
-    <div class="logo">
-        YASCHI
-    </div>
-
-    <a href="cart.html">
-        ← Back to Cart
-    </a>
-
-</header>
-
-
-<div class="container">
-
-    <h1>♡ Checkout ♡</h1>
-
-
-    <div class="checkout">
-
-
-        <!-- LEFT -->
-
-        <div class="left">
-
-
-            <!-- DELIVERY -->
-
-            <div class="box">
-
-                <h2>Delivery Address</h2>
-
-
-                <label>Full Name</label>
-
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                >
-
-
-                <label>Phone Number</label>
-
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter your phone number"
-                >
-
-
-                <label>Address</label>
-
-                <input
-                    type="text"
-                    id="address"
-                    placeholder="House no., Street, Area"
-                >
-
-
-                <div class="row">
-
-                    <div>
-
-                        <label>City</label>
-
-                        <input
-                            type="text"
-                            id="city"
-                            placeholder="City"
-                        >
-
-                    </div>
-
-
-                    <div>
-
-                        <label>PIN Code</label>
-
-                        <input
-                            type="text"
-                            id="pin"
-                            placeholder="PIN Code"
-                        >
-
-                    </div>
-
+            <!-- Deliver To Location -->
+            <div class="nav-location" id="locationSelector" title="Delivery Location">
+                <span class="loc-label">Deliver to</span>
+                <div class="loc-country">
+                    <i class="fa-solid fa-location-dot loc-icon"></i>
+                    <span class="loc-name">India</span>
                 </div>
-
             </div>
 
-
-            <!-- PAYMENT -->
-
-            <div class="box">
-
-                <h2>Payment Method</h2>
-
-
-                <div class="payment-option">
-
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="cod"
-                        checked
-                    >
-
-                    Cash on Delivery
-
+            <!-- Search Bar -->
+            <div class="search-bar-wrapper">
+                <div class="search-bar">
+                    <div class="search-select-wrapper">
+                        <select class="search-select" id="searchCategory" aria-label="Search department">
+                            <option value="all">All</option>
+                            <option value="corsets">Corsets</option>
+                            <option value="dresses">Dresses</option>
+                            <option value="skirts">Skirts</option>
+                            <option value="shrugs">Shrugs</option>
+                            <option value="tops">Tops & Tunics</option>
+                            <option value="bottoms">Bottoms</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="makeup">Makeup</option>
+                        </select>
+                        <i class="fa-solid fa-caret-down select-arrow"></i>
+                    </div>
+                    <input type="text" id="search" class="search-input" placeholder="Search Yaschi" aria-label="Search Yaschi">
+                    <button type="button" id="searchButton" class="search-btn" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
-
-
-                <div class="payment-option">
-
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="upi"
-                    >
-
-                    UPI
-
-                </div>
-
-
-                <div class="payment-option">
-
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="card"
-                    >
-
-                    Credit / Debit Card
-
-                </div>
-
             </div>
 
+            <!-- User Actions Right -->
+            <div class="header-actions">
+                <a href="signin.html" class="action-item action-signin">
+                    <span class="action-small">Hello, sign in</span>
+                    <span class="action-main">Account & Lists <i class="fa-solid fa-caret-down mini-caret"></i></span>
+                </a>
+
+                <a href="returns.html" class="action-item action-returns">
+                    <span class="action-small">Returns</span>
+                    <span class="action-main">& Orders</span>
+                </a>
+
+                <a href="cart.html" class="action-item action-cart" id="cartButton" aria-label="View Shopping Cart">
+                    <div class="cart-icon-box">
+                        <i class="fa-solid fa-basket-shopping cart-icon"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="cart-text">Cart</span>
+                </a>
+            </div>
         </div>
 
-
-        <!-- RIGHT -->
-
-        <div class="right">
-
-            <div class="summary">
-
-                <h2>Order Summary</h2>
-
-
-                <div class="summary-row">
-
-                    <span>Items</span>
-
-                    <span id="items">
-                        0
-                    </span>
-
-                </div>
-
-
-                <div class="summary-row">
-
-                    <span>Subtotal</span>
-
-                    <span id="subtotal">
-                        ₹0
-                    </span>
-
-                </div>
-
-
-                <div class="summary-row">
-
-                    <span>Delivery</span>
-
-                    <span>
-                        FREE
-                    </span>
-
-                </div>
-
-
-                <div class="summary-row total">
-
-                    <span>Total</span>
-
-                    <span id="total">
-                        ₹0
-                    </span>
-
-                </div>
-
-
-                <button
-                    class="place-order"
-                    id="placeOrder"
-                >
-
-                    Place Order
-
+        <!-- Sub-navigation Bar -->
+        <nav class="sub-nav" aria-label="Primary Navigation">
+            <div class="sub-nav-left">
+                <button class="panel-all-btn" id="drawerOpenBtn">
+                    <i class="fa-solid fa-bars"></i>
+                    <span>All</span>
                 </button>
+                <ul class="nav-links">
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="customer-service.html">Customer Service</a></li>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                </ul>
+            </div>
+            <div class="sub-nav-right">
+                <a href="deals.html" class="deals-highlight">
+                    Shop Deals on Clothes, Makeup & more.
+                </a>
+            </div>
+        </nav>
+    </header>
 
+    <!-- Mobile Slide Drawer Menu -->
+    <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div class="drawer-user">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Hello, Sign in</span>
+            </div>
+            <button class="drawer-close" id="drawerCloseBtn" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="drawer-content">
+            <h3>Shop by Category</h3>
+            <ul>
+                <li><a href="corsets.html"><i class="fa-solid fa-angle-right"></i> Corsets</a></li>
+                <li><a href="dresses.html"><i class="fa-solid fa-angle-right"></i> Dresses</a></li>
+                <li><a href="skirts.html"><i class="fa-solid fa-angle-right"></i> Skirts</a></li>
+                <li><a href="shrugs.html"><i class="fa-solid fa-angle-right"></i> Shrugs</a></li>
+                <li><a href="tops-and-tunics.html"><i class="fa-solid fa-angle-right"></i> Tops & Tunics</a></li>
+                <li><a href="bottoms.html"><i class="fa-solid fa-angle-right"></i> Bottoms</a></li>
+                <li><a href="jwelleries.html"><i class="fa-solid fa-angle-right"></i> Accessories</a></li>
+                <li><a href="makeup.html"><i class="fa-solid fa-angle-right"></i> Makeup</a></li>
+            </ul>
+            <div class="drawer-divider"></div>
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="deals.html"><i class="fa-solid fa-tag"></i> Today's Deals</a></li>
+                <li><a href="gift-cards.html"><i class="fa-solid fa-gift"></i> Gift Cards</a></li>
+                <li><a href="sell.html"><i class="fa-solid fa-store"></i> Sell on Yaschi</a></li>
+                <li><a href="story.html"><i class="fa-solid fa-book-open"></i> Our Story</a></li>
+                <li><a href="customer-service.html"><i class="fa-solid fa-headset"></i> Customer Service</a></li>
+            </ul>
+        </div>
+    </aside>
 
-                <p id="message"></p>
+    <!-- Main Checkout Container -->
+    <main class="checkout-wrapper">
+        <h1 class="page-main-title">Secure Checkout</h1>
 
+        <form id="checkoutForm" class="checkout-layout">
+            <!-- Left: Checkout Steps -->
+            <div class="checkout-steps">
+                <!-- Step 1: Customer Contact -->
+                <div class="checkout-card">
+                    <div class="checkout-card-header">
+                        <span class="step-num">1</span>
+                        <h2 class="checkout-card-title">Customer Information</h2>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="custEmail">Email Address *</label>
+                            <input type="email" id="custEmail" class="form-input" placeholder="name@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="custPhone">Phone Number *</label>
+                            <input type="tel" id="custPhone" class="form-input" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Shipping Address -->
+                <div class="checkout-card">
+                    <div class="checkout-card-header">
+                        <span class="step-num">2</span>
+                        <h2 class="checkout-card-title">Shipping Address</h2>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="custName">Full Name *</label>
+                        <input type="text" id="custName" class="form-input" placeholder="e.g. Yasmin Sahu" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="custAddress">Street Address / House No. *</label>
+                        <input type="text" id="custAddress" class="form-input" placeholder="Flat / House No., Apartment, Street" required>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="custCity">City *</label>
+                            <input type="text" id="custCity" class="form-input" placeholder="e.g. Mumbai" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="custState">State *</label>
+                            <input type="text" id="custState" class="form-input" placeholder="e.g. Maharashtra" required>
+                        </div>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="custPin">PIN Code *</label>
+                            <input type="text" id="custPin" class="form-input" placeholder="e.g. 400001" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="custCountry">Country</label>
+                            <input type="text" id="custCountry" class="form-input" value="India" readonly style="background:#f4f4f4;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment Method -->
+                <div class="checkout-card">
+                    <div class="checkout-card-header">
+                        <span class="step-num">3</span>
+                        <h2 class="checkout-card-title">Payment Method</h2>
+                    </div>
+                    <div class="payment-options-grid">
+                        <label class="payment-method-card active">
+                            <input type="radio" name="paymentMethod" value="cod" checked>
+                            <div>
+                                <strong>Cash on Delivery (COD)</strong>
+                                <div style="font-size:0.8rem; color:#777;">Pay with cash or UPI at your doorstep</div>
+                            </div>
+                        </label>
+
+                        <label class="payment-method-card">
+                            <input type="radio" name="paymentMethod" value="upi">
+                            <div>
+                                <strong>UPI / QR Code (GPay, PhonePe, Paytm)</strong>
+                                <div style="font-size:0.8rem; color:#777;">Instant bank transfer via your UPI app</div>
+                            </div>
+                        </label>
+
+                        <div id="upiDetailsBox" class="payment-details-box">
+                            <div class="form-group">
+                                <label class="form-label" for="upiId">Enter UPI VPA (e.g. user@okhdfcbank)</label>
+                                <input type="text" id="upiId" class="form-input" placeholder="yourname@upi">
+                            </div>
+                            <div style="font-size:0.8rem; color:#666; margin-top:6px;">
+                                <i class="fa-solid fa-qrcode"></i> A secure payment notification will be triggered upon placing the order.
+                            </div>
+                        </div>
+
+                        <label class="payment-method-card">
+                            <input type="radio" name="paymentMethod" value="card">
+                            <div>
+                                <strong>Credit / Debit Card</strong>
+                                <div style="font-size:0.8rem; color:#777;">Visa, MasterCard, RuPay, American Express</div>
+                            </div>
+                        </label>
+
+                        <div id="cardDetailsBox" class="payment-details-box">
+                            <div class="form-group">
+                                <label class="form-label">Card Number</label>
+                                <input type="text" class="form-input" placeholder="4111 2222 3333 4444" maxlength="19">
+                            </div>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label class="form-label">Expiry (MM/YY)</label>
+                                    <input type="text" class="form-input" placeholder="12/28" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">CVV</label>
+                                    <input type="password" class="form-input" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                            <div style="font-size:0.78rem; color:#777;">Note: In production, payment is processed securely via Razorpay or Stripe.</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-checkout" id="btnSubmitOrder" style="margin-top:24px;">
+                        Place Order ♡
+                    </button>
+                </div>
             </div>
 
-        </div>
+            <!-- Right: Order Review Sidebar -->
+            <div class="checkout-sidebar">
+                <div class="checkout-card">
+                    <h3 class="checkout-card-title" style="margin-bottom:16px;">Order Summary</h3>
+                    <div id="checkoutItemsList" style="max-height:300px; overflow-y:auto; margin-bottom:18px; border-bottom:1px solid #eee; padding-bottom:12px;">
+                        <!-- Rendered dynamically -->
+                    </div>
 
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="chkSubtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="chkShipping">FREE</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Due</span>
+                        <span id="chkTotal">₹0</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Order Confirmation Modal -->
+    <div class="order-modal-overlay" id="orderModal">
+        <div class="order-modal-card">
+            <div class="order-success-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 style="font-family:var(--font-serif-display); color:var(--color-title-sage); margin-bottom:8px;">Order Confirmed!</h2>
+            <p style="color:#555; font-size:0.95rem; margin-bottom:18px;">Thank you for shopping with Yaschi. Your fairycore pieces are being carefully packed with love.</p>
+            
+            <div style="background:#f7faf8; border:1px solid #e1ebe3; border-radius:10px; padding:16px; margin-bottom:24px; text-align:left; font-size:0.9rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:#777;">Order Number:</span>
+                    <strong id="modalOrderId" style="color:var(--color-text-dark);">#YAS-000000</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span style="color:#777;">Estimated Delivery:</span>
+                    <strong id="modalDeliveryDate" style="color:var(--color-title-sage);">3 - 5 Business Days</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                    <span style="color:#777;">Payment Mode:</span>
+                    <strong id="modalPaymentMode" style="color:var(--color-text-dark);">Cash on Delivery</strong>
+                </div>
+            </div>
+
+            <a href="index.html" class="btn-checkout" style="text-decoration:none;">
+                Back to Home Store
+            </a>
+        </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <a href="#" class="back-to-top" id="backToTopBtn">Back to Top</a>
+        <div class="footer-columns-container">
+            <div class="footer-col">
+                <h3 class="footer-col-title">Get to Know Us</h3>
+                <ul class="footer-links">
+                    <li><a href="story.html">About Yaschi</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="story.html">Our Story</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Connect with Us</h3>
+                <ul class="footer-links social-links">
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Let Us Help You</h3>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Your Account</a></li>
+                    <li><a href="returns.html">Returns Centre</a></li>
+                    <li><a href="#">Recalls and Product Safety Alerts</a></li>
+                    <li><a href="#">100% Purchase Protection</a></li>
+                    <li><a href="customer-service.html">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-logo-row">
+            <a href="index.html" class="footer-logo-link" aria-label="Yaschi Home">
+                <img src="Yaschi_logo.png" alt="Yaschi Crest Logo" class="footer-logo-img">
+            </a>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="footer-policy-links">
+                <a href="#">Condition of Use</a>
+                <span class="policy-sep">&bull;</span>
+                <a href="#">Privacy Notice</a>
+                <span class="policy-sep">&bull;</span>
+                <a href="#">Your Ads Privacy Notice</a>
+            </div>
+            <p class="copyright-text">&copy; 2026 Yaschi.com, Inc. or its affiliates. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <a href="index.html" class="back">
-        ← Continue Shopping
-    </a>
+    <!-- Interactive Feedback Toast -->
+    <div id="yaschiToast" class="yaschi-toast" role="status" aria-live="polite"></div>
 
-</div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/header.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = window.YaschiCart ? window.YaschiCart.getItems() : [];
+            const listEl = document.getElementById('checkoutItemsList');
+            const subtotalEl = document.getElementById('chkSubtotal');
+            const shippingEl = document.getElementById('chkShipping');
+            const totalEl = document.getElementById('chkTotal');
 
-<script>
+            if (items.length === 0) {
+                if (listEl) {
+                    listEl.innerHTML = '<p style="color:#777; font-size:0.9rem;">Your shopping bag is empty. <a href="shop.html" style="color:var(--color-title-sage);">Browse Shop</a></p>';
+                }
+                const submitBtn = document.getElementById('btnSubmitOrder');
+                if (submitBtn) submitBtn.disabled = true;
+                return;
+            }
 
+            const subtotal = window.YaschiCart.getSubtotal();
+            const shipping = subtotal >= 999 ? 0 : 99;
+            const total = subtotal + shipping;
 
-// GET CART
+            if (listEl) {
+                listEl.innerHTML = items.map(item => `
+                    <div style="display:flex; gap:12px; margin-bottom:12px; align-items:center;">
+                        <img src="${item.image}" alt="${item.name}" style="width:48px; height:58px; object-fit:cover; border-radius:6px;">
+                        <div style="flex:1;">
+                            <div style="font-size:0.88rem; font-weight:600; color:var(--color-text-dark);">${item.name}</div>
+                            <div style="font-size:0.78rem; color:#777;">Size: ${item.size} × ${item.quantity}</div>
+                        </div>
+                        <div style="font-size:0.9rem; font-weight:700; color:var(--color-rose-gold);">₹${item.price * item.quantity}</div>
+                    </div>
+                `).join('');
+            }
 
-let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+            if (subtotalEl) subtotalEl.textContent = `₹${subtotal}`;
+            if (shippingEl) shippingEl.textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
+            if (totalEl) totalEl.textContent = `₹${total}`;
 
+            // Payment radio change handler
+            const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+            const upiBox = document.getElementById('upiDetailsBox');
+            const cardBox = document.getElementById('cardDetailsBox');
 
-// CALCULATE TOTAL
+            paymentRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    document.querySelectorAll('.payment-method-card').forEach(c => c.classList.remove('active'));
+                    e.target.closest('.payment-method-card').classList.add('active');
 
-let totalItems = 0;
+                    if (e.target.value === 'upi') {
+                        if (upiBox) upiBox.classList.add('show');
+                        if (cardBox) cardBox.classList.remove('show');
+                    } else if (e.target.value === 'card') {
+                        if (cardBox) cardBox.classList.add('show');
+                        if (upiBox) upiBox.classList.remove('show');
+                    } else {
+                        if (upiBox) upiBox.classList.remove('show');
+                        if (cardBox) cardBox.classList.remove('show');
+                    }
+                });
+            });
 
-let totalPrice = 0;
+            // Form Submit
+            const form = document.getElementById('checkoutForm');
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
 
+                    const customer = {
+                        email: document.getElementById('custEmail').value,
+                        phone: document.getElementById('custPhone').value,
+                        name: document.getElementById('custName').value,
+                        address: document.getElementById('custAddress').value,
+                        city: document.getElementById('custCity').value,
+                        state: document.getElementById('custState').value,
+                        pin: document.getElementById('custPin').value,
+                        country: 'India'
+                    };
 
-for (let i = 0; i < cart.length; i++) {
+                    const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'cod';
 
-    totalItems =
-        totalItems + Number(cart[i].quantity);
+                    const orderData = {
+                        customer: customer,
+                        items: items,
+                        subtotal: subtotal,
+                        shipping: shipping,
+                        total: total,
+                        paymentMethod: selectedPayment.toUpperCase()
+                    };
 
-    totalPrice =
-        totalPrice +
-        Number(cart[i].price) *
-        Number(cart[i].quantity);
+                    const order = await window.YaschiAPI.createOrder(orderData);
 
-}
+                    // Clear cart
+                    window.YaschiCart.clear();
 
+                    // Show confirmation modal
+                    const modal = document.getElementById('orderModal');
+                    const modalId = document.getElementById('modalOrderId');
+                    const modalPay = document.getElementById('modalPaymentMode');
 
-// SHOW SUMMARY
-
-document.getElementById("items").innerHTML =
-    totalItems;
-
-document.getElementById("subtotal").innerHTML =
-    "₹" + totalPrice;
-
-document.getElementById("total").innerHTML =
-    "₹" + totalPrice;
-
-
-// PLACE ORDER
-
-document.getElementById("placeOrder").onclick =
-function () {
-
-
-    let name =
-        document.getElementById("name").value;
-
-    let phone =
-        document.getElementById("phone").value;
-
-    let address =
-        document.getElementById("address").value;
-
-    let city =
-        document.getElementById("city").value;
-
-    let pin =
-        document.getElementById("pin").value;
-
-
-    if (
-        name == "" ||
-        phone == "" ||
-        address == "" ||
-        city == "" ||
-        pin == ""
-    ) {
-
-        alert("Please fill all delivery details.");
-
-        return;
-
-    }
-
-
-    if (cart.length == 0) {
-
-        alert("Your cart is empty.");
-
-        return;
-
-    }
-
-
-    document.getElementById("message").innerHTML =
-        "✓ Order placed successfully! ♡";
-
-
-    // Empty cart
-
-    localStorage.removeItem("cart");
-
-};
-
-</script>
-
-
+                    if (modalId) modalId.textContent = `#${order.id}`;
+                    if (modalPay) modalPay.textContent = selectedPayment === 'cod' ? 'Cash on Delivery' : selectedPayment.toUpperCase();
+                    if (modal) modal.classList.add('active');
+                });
+            }
+        });
+    </script>
 </body>
-
 </html>

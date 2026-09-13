@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couture Gift Cards | Yaschi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <header class="site-header" id="siteHeader">
+        <div class="top-nav">
+            <div class="header-left">
+                <a href="index.html" class="brand-logo-link" aria-label="Yaschi Home">
+                    <img src="Yaschi_logo.png" alt="Yaschi Couture" class="header-logo-img">
+                </a>
+                <div class="location-box" id="locationSelector" role="button" tabindex="0" aria-label="Delivery location selector">
+                    <i class="fa-solid fa-location-dot location-icon"></i>
+                    <div class="location-text">
+                        <span class="loc-sub">Deliver to</span>
+                        <span class="loc-main" id="userLocationText">India</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-container" role="search">
+                <div class="search-box">
+                    <select id="searchCategory" class="search-category-select" aria-label="Select department">
+                        <option value="all">All</option>
+                        <option value="corsets">Corsets</option>
+                        <option value="dresses">Dresses</option>
+                        <option value="skirts">Skirts</option>
+                        <option value="shrugs">Shrugs</option>
+                        <option value="tops">Tops & Tunics</option>
+                        <option value="bottoms">Bottoms</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="makeup">Makeup</option>
+                    </select>
+                    <input type="text" id="search" class="search-input" placeholder="Search Yaschi" aria-label="Search Yaschi">
+                    <button type="button" id="searchButton" class="search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <a href="signin.html" class="action-item action-signin"><span class="action-small">Hello, sign in</span><span class="action-main">Account & Lists <i class="fa-solid fa-caret-down mini-caret"></i></span></a>
+                <a href="returns.html" class="action-item action-returns"><span class="action-small">Returns</span><span class="action-main">& Orders</span></a>
+                <a href="wishlist.html" class="action-item" title="Wishlist"><i class="fa-regular fa-heart" style="font-size:1.4rem; color:var(--color-blush);"></i></a>
+                <a href="cart.html" class="action-item action-cart" id="cartButton" aria-label="View Shopping Cart">
+                    <div class="cart-icon-box"><i class="fa-solid fa-basket-shopping cart-icon"></i><span id="cart-count" class="cart-badge">0</span></div>
+                    <span class="cart-text">Cart</span>
+                </a>
+            </div>
+        </div>
+
+        <nav class="sub-nav" aria-label="Primary Navigation">
+            <div class="sub-nav-left">
+                <button class="panel-all-btn" id="drawerOpenBtn"><i class="fa-solid fa-bars"></i><span>All</span></button>
+                <ul class="nav-links">
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="customer-service.html">Customer Service</a></li>
+                    <li><a href="gift-cards.html" class="active" style="color:var(--color-rose-gold); font-weight:700;">Gift Cards</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                </ul>
+            </div>
+            <div class="sub-nav-right"><a href="deals.html" class="deals-highlight">Shop Deals on Clothes, Makeup & more.</a></div>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header"><div class="drawer-user"><i class="fa-solid fa-circle-user"></i><span>Hello, Sign in</span></div><button class="drawer-close" id="drawerCloseBtn" aria-label="Close menu">&times;</button></div>
+        <div class="drawer-content">
+            <h3>Shop by Category</h3>
+            <ul>
+                <li><a href="corsets.html"><i class="fa-solid fa-angle-right"></i> Corsets</a></li>
+                <li><a href="dresses.html"><i class="fa-solid fa-angle-right"></i> Dresses</a></li>
+                <li><a href="skirts.html"><i class="fa-solid fa-angle-right"></i> Skirts</a></li>
+                <li><a href="shrugs.html"><i class="fa-solid fa-angle-right"></i> Shrugs</a></li>
+                <li><a href="tops-and-tunics.html"><i class="fa-solid fa-angle-right"></i> Tops & Tunics</a></li>
+                <li><a href="bottoms.html"><i class="fa-solid fa-angle-right"></i> Bottoms</a></li>
+                <li><a href="jwelleries.html"><i class="fa-solid fa-angle-right"></i> Accessories</a></li>
+                <li><a href="makeup.html"><i class="fa-solid fa-angle-right"></i> Makeup</a></li>
+            </ul>
+            <div class="drawer-divider"></div>
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="deals.html"><i class="fa-solid fa-tag"></i> Today's Deals</a></li>
+                <li><a href="gift-cards.html"><i class="fa-solid fa-gift"></i> Gift Cards</a></li>
+                <li><a href="sell.html"><i class="fa-solid fa-store"></i> Sell on Yaschi</a></li>
+                <li><a href="story.html"><i class="fa-solid fa-book-open"></i> Our Story</a></li>
+                <li><a href="customer-service.html"><i class="fa-solid fa-headset"></i> Customer Service</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="shop-page-wrapper">
+        <!-- Gift Card Hero -->
+        <div class="gift-card-hero">
+            <span style="background: var(--color-blush); color: #fff; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 14px; border-radius: 14px; display: inline-block; margin-bottom: 12px;">Instant Couture Gifting</span>
+            <h1 style="font-family: var(--font-serif-display); font-size: 2.4rem; color: var(--color-title-sage); margin-bottom: 8px;">The Yaschi E-Gift Card</h1>
+            <p style="color: #666; font-size: 0.95rem; max-width: 600px; margin: 0 auto;">
+                Give the magic of cottagecore romanticism and couture silhouettes. Delivered straight to their inbox with your personalized note.
+            </p>
+        </div>
+
+        <div class="gift-card-layout">
+            <!-- Left: Card Mockup Preview -->
+            <div class="gift-card-mockup-wrap">
+                <div class="gift-card-mockup">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span class="gc-brand">YASCHI</span>
+                        <div class="gc-chip"></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.8rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Gift Card Value</div>
+                        <div class="gc-amount-display" id="previewAmount">₹2,500</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div class="gc-recipient-display">
+                            <span>FOR: </span><strong id="previewRecipient">Someone Special</strong>
+                        </div>
+                        <div style="font-size: 0.75rem; letter-spacing: 1px; opacity: 0.8;">VALID FOREVER</div>
+                    </div>
+                </div>
+
+                <div style="background: #ffffff; border: 1px solid rgba(216, 180, 182, 0.3); border-radius: 12px; padding: 20px; margin-top: 24px; box-shadow: var(--shadow-card);">
+                    <h4 style="font-family: var(--font-serif-display); color: var(--color-title-sage); margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-sparkles" style="color:var(--color-rose-gold);"></i> Gifting Privileges</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #555; display: flex; flex-direction: column; gap: 8px;">
+                        <li><i class="fa-solid fa-check" style="color: #4a7c59; margin-right: 8px;"></i> Instant digital delivery to recipient's email</li>
+                        <li><i class="fa-solid fa-check" style="color: #4a7c59; margin-right: 8px;"></i> No expiration date & zero service fees</li>
+                        <li><i class="fa-solid fa-check" style="color: #4a7c59; margin-right: 8px;"></i> Redeemable on all dresses, corsets, shrugs & makeup</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right: Configurator Form -->
+            <div style="background: #ffffff; border: 1px solid rgba(216, 180, 182, 0.4); border-radius: 16px; padding: 32px; box-shadow: var(--shadow-card);">
+                <h3 style="font-family: var(--font-serif-display); font-size: 1.5rem; color: var(--color-charcoal); margin-bottom: 6px;">1. Select Denomination</h3>
+                <p style="font-size: 0.85rem; color: #777; margin-bottom: 16px;">Choose a pre-set amount or enter a custom sum</p>
+                
+                <div class="denomination-selector">
+                    <button type="button" class="denom-btn" data-value="1000">₹1,000</button>
+                    <button type="button" class="denom-btn active" data-value="2500">₹2,500</button>
+                    <button type="button" class="denom-btn" data-value="5000">₹5,000</button>
+                    <button type="button" class="denom-btn" data-value="10000">₹10,000</button>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Or Custom Amount (₹)</label>
+                    <input type="number" id="customAmountInput" placeholder="Min. ₹500 - Max. ₹50,000" min="500" max="50000" style="width: 100%; padding: 12px; border: 1px solid #d8b4b6; border-radius: 8px; font-size: 0.95rem; outline: none;">
+                </div>
+
+                <h3 style="font-family: var(--font-serif-display); font-size: 1.5rem; color: var(--color-charcoal); margin-bottom: 16px;">2. Recipient Details</h3>
+                <form id="giftCardForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div>
+                            <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Recipient Name *</label>
+                            <input type="text" id="recipientName" required placeholder="e.g. Juliet Montague" style="width: 100%; padding: 12px; border: 1px solid #d8b4b6; border-radius: 8px; font-size: 0.95rem; outline: none;">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Recipient Email *</label>
+                            <input type="email" id="recipientEmail" required placeholder="juliet@cottage.com" style="width: 100%; padding: 12px; border: 1px solid #d8b4b6; border-radius: 8px; font-size: 0.95rem; outline: none;">
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Your Name *</label>
+                        <input type="text" id="senderName" required placeholder="e.g. Clara Oswald" style="width: 100%; padding: 12px; border: 1px solid #d8b4b6; border-radius: 8px; font-size: 0.95rem; outline: none;">
+                    </div>
+
+                    <div style="margin-bottom: 24px;">
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Personal Message (Optional)</label>
+                        <textarea id="giftMessage" rows="3" placeholder="Wishing you days filled with romance, wild roses, and soft silhouettes..." style="width: 100%; padding: 12px; border: 1px solid #d8b4b6; border-radius: 8px; font-size: 0.95rem; outline: none; font-family: inherit;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-filter-apply" style="width: 100%; padding: 14px; font-size: 1rem; border-radius: 25px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <i class="fa-solid fa-gift"></i> Add Gift Card to Bag
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer class="site-footer">
+        <a href="#" class="back-to-top" id="backToTopBtn">Back to Top</a>
+        <div class="footer-columns-container">
+            <div class="footer-col">
+                <h3 class="footer-col-title">Get to Know Us</h3>
+                <ul class="footer-links">
+                    <li><a href="story.html">About Yaschi</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="story.html">Our Story</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Connect with Us</h3>
+                <ul class="footer-links social-links">
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Let Us Help You</h3>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Your Account</a></li>
+                    <li><a href="returns.html">Returns Centre</a></li>
+                    <li><a href="#">100% Purchase Protection</a></li>
+                    <li><a href="customer-service.html">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-logo-row">
+            <a href="index.html" class="footer-logo-link"><img src="Yaschi_logo.png" alt="Yaschi Crest Logo" class="footer-logo-img"></a>
+        </div>
+        <div class="footer-bottom-bar">
+            <p class="copyright-text">&copy; 2026 Yaschi.com, Inc. or its affiliates. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="yaschiToast" class="yaschi-toast" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/header.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentAmount = 2500;
+            const previewAmount = document.getElementById('previewAmount');
+            const previewRecipient = document.getElementById('previewRecipient');
+            const customInput = document.getElementById('customAmountInput');
+            const recipientName = document.getElementById('recipientName');
+            const denomBtns = document.querySelectorAll('.denom-btn');
+
+            denomBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    denomBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentAmount = Number(btn.getAttribute('data-value'));
+                    if (customInput) customInput.value = '';
+                    if (previewAmount) previewAmount.textContent = `₹${currentAmount.toLocaleString('en-IN')}`;
+                });
+            });
+
+            if (customInput) {
+                customInput.addEventListener('input', () => {
+                    const val = Number(customInput.value);
+                    if (val > 0) {
+                        denomBtns.forEach(b => b.classList.remove('active'));
+                        currentAmount = val;
+                        if (previewAmount) previewAmount.textContent = `₹${currentAmount.toLocaleString('en-IN')}`;
+                    }
+                });
+            }
+
+            if (recipientName) {
+                recipientName.addEventListener('input', () => {
+                    if (previewRecipient) {
+                        previewRecipient.textContent = recipientName.value.trim() || 'Someone Special';
+                    }
+                });
+            }
+
+            const giftForm = document.getElementById('giftCardForm');
+            if (giftForm) {
+                giftForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const recName = document.getElementById('recipientName').value;
+                    const recEmail = document.getElementById('recipientEmail').value;
+                    const sender = document.getElementById('senderName').value;
+                    const msg = document.getElementById('giftMessage').value;
+
+                    const giftProduct = {
+                        id: `giftcard-${Date.now()}`,
+                        name: `Yaschi Couture E-Gift Card (₹${currentAmount.toLocaleString('en-IN')})`,
+                        price: currentAmount,
+                        originalPrice: currentAmount,
+                        images: ['assets_processed/accessories_4.jpg'],
+                        category: 'accessories',
+                        description: `Digital gift card for ${recName} (${recEmail}) from ${sender}. Message: "${msg || 'Best wishes!'}"`
+                    };
+
+                    if (window.YaschiCart) {
+                        window.YaschiCart.addItem(giftProduct, 'Digital Card', 1);
+                        if (window.openCartDrawer) window.openCartDrawer();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

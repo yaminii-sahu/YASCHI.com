@@ -3,325 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corsets | Yaschi</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <title>Romantic Dresses | Yaschi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-
-
-    <style>
-
-        body{
-            background:#e2e8e4;
-            font-family:Arial;
-        }
-
-        h1{
-            text-align:center;
-            color:#9FB7AA;
-            margin:30px;
-        }
-
-        .products{
-            display:flex;
-            flex-wrap:wrap;
-            justify-content:space-evenly;
-        }
-
-        .card{
-
-            width:260px;
-            background:white;
-            border-radius:10px;
-            padding:15px;
-            margin:20px;
-            text-align:center;
-            box-shadow:0px 3px 10px lightgray;
-
-        }
-
-        .card img{
-
-            width:100%;
-            height:300px;
-            object-fit:cover;
-
-        }
-
-        .price{
-
-            color:#CFA7B5;
-            font-size:22px;
-            font-weight:bold;
-
-        }
-
-        .rating{
-
-            color:gold;
-            margin:10px;
-
-        }
-
-        button{
-
-            padding:10px 18px;
-            margin:5px;
-            border:none;
-            cursor:pointer;
-            border-radius:20px;
-
-        }
-
-        .cart{
-
-            background:#d8b4b6;
-            color:white;
-
-        }
-
-        .wish{
-
-            background:#9FB7AA;
-            color:white;
-
-        }
-
-        input{
-
-            width:50px;
-            text-align:center;
-
-        }
-
-    </style>
-
 </head>
-
 <body>
-     <HEADER>
-        <div class="navbar">
-            <div class="nav-logo border">
-                <div class="logo">
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="top-nav">
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="brand-logo" aria-label="Yaschi Home">
+                <img src="Yaschi_logo.png" alt="Yaschi Logo" class="logo-img">
+            </a>
+            <div class="nav-location" id="locationSelector" title="Delivery Location">
+                <span class="loc-label">Deliver to</span>
+                <div class="loc-country">
+                    <i class="fa-solid fa-location-dot loc-icon"></i>
+                    <span class="loc-name">India</span>
                 </div>
             </div>
-            <div class="nav-address">
-                <p class="add-1">Deliver to</p>
-                <div class="add-icon">
-                    <i class="fa-solid fa-location-dot" ></i>
-
-                 <a href="#" style="color:#d8b4b6;text-decoration: none;">  <p class="add-2">India</p></a>
+            <div class="search-bar-wrapper">
+                <div class="search-bar">
+                    <div class="search-select-wrapper">
+                        <select class="search-select" id="searchCategory" aria-label="Search department">
+                            <option value="all">All</option>
+                            <option value="corsets">Corsets</option>
+                            <option value="dresses" selected>Dresses</option>
+                            <option value="skirts">Skirts</option>
+                            <option value="shrugs">Shrugs</option>
+                            <option value="tops">Tops & Tunics</option>
+                            <option value="bottoms">Bottoms</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="makeup">Makeup</option>
+                        </select>
+                        <i class="fa-solid fa-caret-down select-arrow"></i>
+                    </div>
+                    <input type="text" id="search" class="search-input" placeholder="Search Dresses..." aria-label="Search Yaschi">
+                    <button type="button" id="searchButton" class="search-btn" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
             </div>
-
-            <div class="nav-search">
-                <select class="search-select">
-                    <option>All</option>
-                </select>
-                <input
-type="text"
-id="search"
-class="search-input"
-placeholder="Search Yaschi">
-                <div class="search-icon">
-                    <a href="#"><i class="fa-brands fa-sistrix" style="color: #e2e8e4;"></i></a>
-                </div>
+            <div class="header-actions">
+                <a href="signin.html" class="action-item action-signin">
+                    <span class="action-small">Hello, sign in</span>
+                    <span class="action-main">Account & Lists <i class="fa-solid fa-caret-down mini-caret"></i></span>
+                </a>
+                <a href="returns.html" class="action-item action-returns">
+                    <span class="action-small">Returns</span>
+                    <span class="action-main">& Orders</span>
+                </a>
+                <a href="cart.html" class="action-item action-cart" id="cartButton" aria-label="View Shopping Cart">
+                    <div class="cart-icon-box">
+                        <i class="fa-solid fa-basket-shopping cart-icon"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="cart-text">Cart</span>
+                </a>
             </div>
-            
-            <div class="nav-signin border">
-              <a href="#">  <p><span>Hello, sign in</span></p> </a>
-          <A href="#">      <p class="nav-2">Account & Lists</p> </A>
-            </div>
-            <div class="nav-returns border">
-                <a href="#"><p><span>Returns</span></p></a>
-                <a href="#"><p class="nav-2">& Orders</p></a>
-            </div>
-            <div class="nav-cart">
-           <a href="cart.html" style="color: #d8b4b6;"> <i class="fa-solid fa-basket-shopping"></i> </a>
-
-           <span id="cart-count">0</span>
-
-         <a href="cart.html">
-    <span class="nav-cart-1">Cart</span>
-</a>
-        
         </div>
+        <nav class="sub-nav" aria-label="Primary Navigation">
+            <div class="sub-nav-left">
+                <button class="panel-all-btn" id="drawerOpenBtn"><i class="fa-solid fa-bars"></i><span>All</span></button>
+                <ul class="nav-links">
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="customer-service.html">Customer Service</a></li>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                </ul>
+            </div>
+            <div class="sub-nav-right">
+                <a href="deals.html" class="deals-highlight">Shop Deals on Clothes, Makeup & more.</a>
+            </div>
+        </nav>
+    </header>
 
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div class="drawer-user"><i class="fa-solid fa-circle-user"></i><span>Hello, Sign in</span></div>
+            <button class="drawer-close" id="drawerCloseBtn" aria-label="Close menu">&times;</button>
         </div>
-
-
-        <div class="panel">
-            <div class="panel-all">
-              <a href="#">  <i class="fa-solid fa-bars"></i> 
-                All</a>
-            </div>
-            <div class="panel-ops">
-                <p><a href="#"> Today's Deals</a></p>
-                <p><a href="#"> Customer Service</a></p>
-                <p><a href="#"> Gift Cards</a></p>
-                <p><a href="#"> Sell</a></p>
-            </div>
-            <div class="panel-deals"><a href="#">
-                Shop Deals on Clothes, Makeup & more.</a>
-            </div>
-
+        <div class="drawer-content">
+            <h3>Shop by Category</h3>
+            <ul>
+                <li><a href="corsets.html"><i class="fa-solid fa-angle-right"></i> Corsets</a></li>
+                <li><a href="dresses.html"><i class="fa-solid fa-angle-right"></i> Dresses</a></li>
+                <li><a href="skirts.html"><i class="fa-solid fa-angle-right"></i> Skirts</a></li>
+                <li><a href="shrugs.html"><i class="fa-solid fa-angle-right"></i> Shrugs</a></li>
+                <li><a href="tops-and-tunics.html"><i class="fa-solid fa-angle-right"></i> Tops & Tunics</a></li>
+                <li><a href="bottoms.html"><i class="fa-solid fa-angle-right"></i> Bottoms</a></li>
+                <li><a href="jwelleries.html"><i class="fa-solid fa-angle-right"></i> Accessories</a></li>
+                <li><a href="makeup.html"><i class="fa-solid fa-angle-right"></i> Makeup</a></li>
+            </ul>
+            <div class="drawer-divider"></div>
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="deals.html"><i class="fa-solid fa-tag"></i> Today's Deals</a></li>
+                <li><a href="gift-cards.html"><i class="fa-solid fa-gift"></i> Gift Cards</a></li>
+                <li><a href="sell.html"><i class="fa-solid fa-store"></i> Sell on Yaschi</a></li>
+                <li><a href="story.html"><i class="fa-solid fa-book-open"></i> Our Story</a></li>
+                <li><a href="customer-service.html"><i class="fa-solid fa-headset"></i> Customer Service</a></li>
+            </ul>
         </div>
-
-        
-    </HEADER>
-
-<h1>DRESSES</h1>
-
-<div class="products">
-
-<div class="card">
-
-<img src="dress1.jpeg">
-
-<h2>Sage dress</h2>
-
-<p>Elegant sage green bridesmaid dress.</p>
-
-<p class="price">₹1999</p>
-
-<p class="rating">
-⭐⭐⭐⭐☆
-</p>
-
-<div class="quantity">
-
-    <button class="minus">−</button>
-
-    <span class="qty">1</span>
-
-    <button class="plus">+</button>
-
-</div>
-
-<br><br>
-
-<button class="cart-btn">
-Add to Cart
-</button>
-
-<button class="wish-btn">
-❤ Wishlist
-</button>
-
-</div>
-
-<div class="card">
-
-<img src="dress2.jpeg">
-
-<h2>White floral Dress</h2>
-
-<p>White cottagecore dress.</p>
-
-<p class="price">₹2299</p>
-
-<p class="rating">
-⭐⭐⭐⭐⭐
-</p>
-
-<div class="quantity">
-
-    <button class="minus">−</button>
-
-    <span class="qty">1</span>
-
-    <button class="plus">+</button>
-
-</div>
-
-<br><br>
-
-<button class="cart-btn">
-Add to Cart
-</button>
-
-<button class="wish-btn">
-❤ Wishlist
-</button>
-
-</div>
-
-<div class="card">
-
-<img src="dress3.jpeg">
-
-<h2>White Floral Dress</h2>
-
-<p>Soft white and floral aesthetic dress.</p>
-
-<p class="price">₹2499</p>
-
-<p class="rating">
-⭐⭐⭐⭐☆
-</p>
-
-<div class="quantity">
-
-    <button class="minus">−</button>
-
-    <span class="qty">1</span>
-
-    <button class="plus">+</button>
-
-</div>
-
-<br><br>
-
-<button class="cart-btn">
-Add to Cart
-</button>
-
-<button class="wish-btn">
-❤ Wishlist
-</button>
-
-</div>
-
-<div class="card">
-
-<img src="dress4.jpeg">
-
-<h2>Blue Vintage Dress</h2>
-
-<p>Classic blue with white lace dress.</p>
-
-<p class="price">₹2699</p>
-
-<p class="rating">
-⭐⭐⭐⭐⭐
-</p>
-
-<div class="quantity">
-
-    <button class="minus">−</button>
-
-    <span class="qty">1</span>
-
-    <button class="plus">+</button>
-
-</div>
-
-<br><br>
-
-<button class="cart-btn">
-Add to Cart
-</button>
-
-<button class="wish-btn">
-❤ Wishlist
-</button>
-
-</div>
-
-</div>
-
-
-<script src="script.js"></script>
-
+    </aside>
+
+    <!-- Main Content -->
+    <main class="shop-page-wrapper">
+        <nav class="shop-breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a> &gt; <a href="shop.html">Collection</a> &gt; <span>Dresses</span>
+        </nav>
+
+        <section class="featured-section" style="padding-left:0; padding-right:0; padding-top:10px;">
+            <div class="section-header-row">
+                <h1 class="section-title">Wildflower & Cottagecore Dresses</h1>
+                <a href="shop.html?category=dresses" class="section-link">Filter in Full Shop &rarr;</a>
+            </div>
+            <p style="color:#666; margin-bottom:28px; max-width:720px; font-size:0.95rem; line-height:1.6;">
+                Tiered floral maxi sundresses, whimsical puff-sleeve midi dresses, and wildflower cottagecore silhouettes for sun-drenched days.
+            </p>
+
+            <div class="product-grid" id="categoryProductGrid"></div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <a href="#" class="back-to-top" id="backToTopBtn">Back to Top</a>
+        <div class="footer-columns-container">
+            <div class="footer-col">
+                <h3 class="footer-col-title">Get to Know Us</h3>
+                <ul class="footer-links">
+                    <li><a href="story.html">About Yaschi</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="story.html">Our Story</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Connect with Us</h3>
+                <ul class="footer-links social-links">
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Let Us Help You</h3>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Your Account</a></li>
+                    <li><a href="returns.html">Returns Centre</a></li>
+                    <li><a href="#">Recalls and Product Safety Alerts</a></li>
+                    <li><a href="#">100% Purchase Protection</a></li>
+                    <li><a href="customer-service.html">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-logo-row">
+            <a href="index.html" class="footer-logo-link" aria-label="Yaschi Home"><img src="Yaschi_logo.png" alt="Yaschi Crest Logo" class="footer-logo-img"></a>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="footer-policy-links"><a href="#">Condition of Use</a><span class="policy-sep">&bull;</span><a href="#">Privacy Notice</a><span class="policy-sep">&bull;</span><a href="#">Your Ads Privacy Notice</a></div>
+            <p class="copyright-text">&copy; 2026 Yaschi.com, Inc. or its affiliates. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="yaschiToast" class="yaschi-toast" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/header.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const grid = document.getElementById('categoryProductGrid');
+            if (!grid) return;
+            const products = await window.YaschiAPI.getProducts({ category: 'dresses' });
+            grid.innerHTML = products.map(p => {
+                const img = (p.images && p.images[0]) || 'assets_processed/dresses_1.jpg';
+                const badgeHtml = p.badge ? `<span class="product-badge">${p.badge}</span>` : '';
+                const discountHtml = p.originalPrice > p.price ? `<span class="original-price">₹${p.originalPrice}</span><span class="discount-tag">${Math.round((1 - p.price/p.originalPrice)*100)}% off</span>` : '';
+                return `
+                    <div class="product-card" data-product-id="${p.id}">
+                        <div class="product-card-thumb">
+                            ${badgeHtml}
+                            <button type="button" class="product-wishlist-btn" data-wishlist-id="${p.id}"><i class="fa-regular fa-heart"></i></button>
+                            <a href="product.html?id=${p.id}"><img src="${img}" alt="${p.name}" loading="lazy"></a>
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-card-category">${p.category}</span>
+                            <h3 class="product-card-title"><a href="product.html?id=${p.id}">${p.name}</a></h3>
+                            <div class="product-card-rating"><i class="fa-solid fa-star"></i><span>${p.rating || '4.8'}</span><span class="review-count">(${p.reviewsCount || 42})</span></div>
+                            <div class="product-card-price-row"><span class="current-price">₹${p.price}</span>${discountHtml}</div>
+                            <button type="button" class="product-card-btn btn-quick-add" data-id="${p.id}"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            if (window.YaschiWishlist) {
+                window.YaschiWishlist.syncButtons();
+                grid.querySelectorAll('.product-wishlist-btn').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const id = btn.getAttribute('data-wishlist-id');
+                        const prod = await window.YaschiAPI.getProductById(id);
+                        if (prod) window.YaschiWishlist.toggleItem(prod);
+                    });
+                });
+            }
+            if (window.YaschiCart) {
+                grid.querySelectorAll('.btn-quick-add').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const id = btn.getAttribute('data-id');
+                        const prod = await window.YaschiAPI.getProductById(id);
+                        if (prod) {
+                            const defaultSize = (prod.sizes && prod.sizes[0]) || 'M';
+                            window.YaschiCart.addItem(prod, defaultSize, 1);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

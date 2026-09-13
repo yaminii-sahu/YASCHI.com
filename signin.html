@@ -239,32 +239,43 @@
     <script>
 
         let form = document.getElementById("signinForm");
+        let createBtn = document.querySelector(".create-button");
 
         form.addEventListener("submit", function(event) {
-
             event.preventDefault();
-
-            let email = document.getElementById("email").value;
-
+            let email = document.getElementById("email").value.trim();
             let password = document.getElementById("password").value;
-
             let message = document.getElementById("message");
 
-
-            if (email == "" || password == "") {
-
+            if (email === "" || password === "") {
                 message.innerHTML = "Please fill all the fields.";
-
+                message.style.color = "#d9534f";
+            } else {
+                let displayName = email.split("@")[0];
+                displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+                localStorage.setItem("yaschi_user", JSON.stringify({ name: displayName, email: email }));
+                message.style.color = "#9fb7aa";
+                message.innerHTML = `Welcome back, ${displayName} ♡ Redirecting...`;
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 900);
             }
-
-            else {
-
-                message.innerHTML = "Welcome back to Yaschi ♡";
-
-            }
-
         });
 
+        if (createBtn) {
+            createBtn.addEventListener("click", function() {
+                let email = document.getElementById("email").value.trim() || "cottagedreamer@yaschi.com";
+                let displayName = email.split("@")[0];
+                displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+                localStorage.setItem("yaschi_user", JSON.stringify({ name: displayName, email: email }));
+                let message = document.getElementById("message");
+                message.style.color = "#9fb7aa";
+                message.innerHTML = `Account created for ${displayName}! Welcome to Yaschi ♡`;
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 900);
+            });
+        }
     </script>
 
 </body>

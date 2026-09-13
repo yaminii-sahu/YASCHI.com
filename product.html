@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Yaschi Couture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <header class="site-header" id="siteHeader">
+        <div class="top-nav">
+            <div class="header-left">
+                <a href="index.html" class="brand-logo-link" aria-label="Yaschi Home">
+                    <img src="Yaschi_logo.png" alt="Yaschi Couture" class="header-logo-img">
+                </a>
+                <div class="location-box" id="locationSelector" role="button" tabindex="0" aria-label="Delivery location selector">
+                    <i class="fa-solid fa-location-dot location-icon"></i>
+                    <div class="location-text">
+                        <span class="loc-sub">Deliver to</span>
+                        <span class="loc-main" id="userLocationText">India</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-container" role="search">
+                <div class="search-box">
+                    <select id="searchCategory" class="search-category-select" aria-label="Select department">
+                        <option value="all">All</option>
+                        <option value="corsets">Corsets</option>
+                        <option value="dresses">Dresses</option>
+                        <option value="skirts">Skirts</option>
+                        <option value="shrugs">Shrugs</option>
+                        <option value="tops">Tops & Tunics</option>
+                        <option value="bottoms">Bottoms</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="makeup">Makeup</option>
+                    </select>
+                    <input type="text" id="search" class="search-input" placeholder="Search Yaschi" aria-label="Search Yaschi">
+                    <button type="button" id="searchButton" class="search-btn" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <a href="signin.html" class="action-item action-signin">
+                    <span class="action-small">Hello, sign in</span>
+                    <span class="action-main">Account & Lists <i class="fa-solid fa-caret-down mini-caret"></i></span>
+                </a>
+                <a href="returns.html" class="action-item action-returns">
+                    <span class="action-small">Returns</span>
+                    <span class="action-main">& Orders</span>
+                </a>
+                <a href="wishlist.html" class="action-item" title="Wishlist">
+                    <i class="fa-regular fa-heart" style="font-size:1.4rem; color:var(--color-blush);"></i>
+                </a>
+                <a href="cart.html" class="action-item action-cart" id="cartButton" aria-label="View Shopping Cart">
+                    <div class="cart-icon-box">
+                        <i class="fa-solid fa-basket-shopping cart-icon"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="cart-text">Cart</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sub-navigation Bar -->
+        <nav class="sub-nav" aria-label="Primary Navigation">
+            <div class="sub-nav-left">
+                <button class="panel-all-btn" id="drawerOpenBtn">
+                    <i class="fa-solid fa-bars"></i>
+                    <span>All</span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="customer-service.html">Customer Service</a></li>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                </ul>
+            </div>
+            <div class="sub-nav-right">
+                <a href="deals.html" class="deals-highlight">
+                    Shop Deals on Clothes, Makeup & more.
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Slide Drawer Menu -->
+    <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div class="drawer-user">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Hello, Sign in</span>
+            </div>
+            <button class="drawer-close" id="drawerCloseBtn" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="drawer-content">
+            <h3>Shop by Category</h3>
+            <ul>
+                <li><a href="corsets.html"><i class="fa-solid fa-angle-right"></i> Corsets</a></li>
+                <li><a href="dresses.html"><i class="fa-solid fa-angle-right"></i> Dresses</a></li>
+                <li><a href="skirts.html"><i class="fa-solid fa-angle-right"></i> Skirts</a></li>
+                <li><a href="shrugs.html"><i class="fa-solid fa-angle-right"></i> Shrugs</a></li>
+                <li><a href="tops-and-tunics.html"><i class="fa-solid fa-angle-right"></i> Tops & Tunics</a></li>
+                <li><a href="bottoms.html"><i class="fa-solid fa-angle-right"></i> Bottoms</a></li>
+                <li><a href="jwelleries.html"><i class="fa-solid fa-angle-right"></i> Accessories</a></li>
+                <li><a href="makeup.html"><i class="fa-solid fa-angle-right"></i> Makeup</a></li>
+            </ul>
+            <div class="drawer-divider"></div>
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="deals.html"><i class="fa-solid fa-tag"></i> Today's Deals</a></li>
+                <li><a href="gift-cards.html"><i class="fa-solid fa-gift"></i> Gift Cards</a></li>
+                <li><a href="sell.html"><i class="fa-solid fa-store"></i> Sell on Yaschi</a></li>
+                <li><a href="story.html"><i class="fa-solid fa-book-open"></i> Our Story</a></li>
+                <li><a href="customer-service.html"><i class="fa-solid fa-headset"></i> Customer Service</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main PDP Container -->
+    <main class="pdp-wrapper">
+        <nav class="shop-breadcrumb" id="pdpBreadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a> &gt; <a href="shop.html" id="bcCategoryLink">Collection</a> &gt; <span id="bcProductName">Product</span>
+        </nav>
+
+        <div id="pdpContentArea">
+            <div style="text-align: center; padding: 60px; color: #888;">Loading storybook piece...</div>
+        </div>
+
+        <!-- Customer Reviews Section -->
+        <section class="pdp-reviews-section" id="pdpReviewsSection">
+            <div class="section-header-row">
+                <h2 class="section-title">Customer Reviews & Testimonials</h2>
+            </div>
+            
+            <div class="reviews-grid-layout">
+                <!-- Left Summary -->
+                <div class="reviews-summary-card">
+                    <div class="avg-rating-large" id="reviewsAvgRating">4.8</div>
+                    <div class="stars-row">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div style="font-size: 0.85rem; color:#777; margin-bottom: 16px;" id="reviewsCountLabel">Based on 48 verified purchases</div>
+
+                    <div class="rating-bar-row">
+                        <span>5 <i class="fa-solid fa-star" style="color:#e59846; font-size:0.75rem;"></i></span>
+                        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 82%;"></div></div>
+                        <span>82%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span>4 <i class="fa-solid fa-star" style="color:#e59846; font-size:0.75rem;"></i></span>
+                        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 12%;"></div></div>
+                        <span>12%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span>3 <i class="fa-solid fa-star" style="color:#e59846; font-size:0.75rem;"></i></span>
+                        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 4%;"></div></div>
+                        <span>4%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span>2 <i class="fa-solid fa-star" style="color:#e59846; font-size:0.75rem;"></i></span>
+                        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 1%;"></div></div>
+                        <span>1%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span>1 <i class="fa-solid fa-star" style="color:#e59846; font-size:0.75rem;"></i></span>
+                        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 1%;"></div></div>
+                        <span>1%</span>
+                    </div>
+
+                    <button type="button" class="btn-write-review" id="openReviewModalBtn">
+                        <i class="fa-solid fa-pen-nib"></i> Write a Customer Review
+                    </button>
+                </div>
+
+                <!-- Right Reviews List -->
+                <div class="reviews-list-container" id="reviewsListContainer">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Products Section -->
+        <section class="featured-section" style="padding-top: 50px; padding-left: 0; padding-right: 0;">
+            <div class="section-header-row">
+                <h2 class="section-title">You May Also Love</h2>
+                <a href="shop.html" class="section-link">View All &rarr;</a>
+            </div>
+            <div class="product-grid" id="relatedGrid">
+                <!-- Populated via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Size Chart Modal -->
+    <div class="size-chart-modal-overlay" id="sizeChartModal" role="dialog" aria-modal="true" aria-labelledby="sizeChartTitle">
+        <div class="size-chart-modal-card">
+            <div class="size-chart-modal-header">
+                <h3 class="size-chart-modal-title" id="sizeChartTitle"><i class="fa-solid fa-ruler-combined" style="color:var(--color-rose-gold); margin-right: 8px;"></i> Yaschi Size Guide</h3>
+                <button type="button" class="size-chart-close-btn" id="closeSizeChartBtn" aria-label="Close size chart">&times;</button>
+            </div>
+            <div class="size-chart-body">
+                <div class="size-unit-toggle-wrapper">
+                    <span class="size-unit-label">Measurement Unit:</span>
+                    <div class="unit-toggle-btn-group">
+                        <button type="button" class="unit-btn active" id="unitInchesBtn">Inches (in)</button>
+                        <button type="button" class="unit-btn" id="unitCmBtn">Centimeters (cm)</button>
+                    </div>
+                </div>
+
+                <div class="size-chart-table-responsive">
+                    <table class="size-chart-table" id="sizeChartTable">
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Bust</th>
+                                <th>Waist</th>
+                                <th>Hips</th>
+                                <th>Standard (IN / UK)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sizeChartTbody">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="how-to-measure-box">
+                    <div class="how-to-measure-title"><i class="fa-solid fa-circle-info" style="color:var(--color-rose-gold);"></i> How to Measure Yourself</div>
+                    <ul class="how-to-measure-list">
+                        <li><strong>Bust:</strong> Measure around the fullest part of your chest with your arms relaxed at your sides.</li>
+                        <li><strong>Waist:</strong> Measure around your natural waistline (the narrowest part of your torso, usually 1-2 inches above the navel).</li>
+                        <li><strong>Hips:</strong> Stand with your heels together and measure around the fullest point of your hips and rear.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Zoom Modal -->
+    <div class="image-lightbox" id="imageLightbox">
+        <button type="button" class="lightbox-close" id="lightboxCloseBtn" aria-label="Close zoom">&times;</button>
+        <div class="lightbox-content">
+            <img src="" id="lightboxImg" alt="Enlarged view">
+        </div>
+    </div>
+
+    <!-- Write a Review Modal -->
+    <div class="size-chart-modal-overlay" id="reviewModal" role="dialog" aria-modal="true">
+        <div class="size-chart-modal-card" style="max-width: 520px;">
+            <div class="size-chart-modal-header">
+                <h3 class="size-chart-modal-title"><i class="fa-solid fa-pen-fancy" style="color:var(--color-rose-gold); margin-right:8px;"></i> Share Your Experience</h3>
+                <button type="button" class="size-chart-close-btn" id="closeReviewModalBtn">&times;</button>
+            </div>
+            <div class="size-chart-body">
+                <form id="writeReviewForm">
+                    <div style="margin-bottom: 16px;">
+                        <label style="display:block; font-size:0.85rem; font-weight:600; color:#555; margin-bottom:6px;">Your Rating *</label>
+                        <select id="reviewRatingInput" required style="width:100%; padding:10px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem;">
+                            <option value="5">★★★★★ 5 Stars (Exceptional & Romantic)</option>
+                            <option value="4">★★★★☆ 4 Stars (Very Good)</option>
+                            <option value="3">★★★☆☆ 3 Stars (Average)</option>
+                            <option value="2">★★☆☆☆ 2 Stars (Needs Improvement)</option>
+                            <option value="1">★☆☆☆☆ 1 Star (Disappointed)</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label style="display:block; font-size:0.85rem; font-weight:600; color:#555; margin-bottom:6px;">Your Name *</label>
+                        <input type="text" id="reviewerNameInput" required placeholder="e.g. Juliet M." style="width:100%; padding:10px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem;">
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display:block; font-size:0.85rem; font-weight:600; color:#555; margin-bottom:6px;">Your Review *</label>
+                        <textarea id="reviewerCommentInput" required rows="4" placeholder="Tell other cottagecore dreamers about the fabric, silhouette, and how it feels to wear..." style="width:100%; padding:10px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem; font-family:inherit;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-filter-apply" style="width:100%; padding:12px; border-radius:25px; font-size:1rem;">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer class="site-footer">
+        <a href="#" class="back-to-top" id="backToTopBtn">Back to Top</a>
+        <div class="footer-columns-container">
+            <div class="footer-col">
+                <h3 class="footer-col-title">Get to Know Us</h3>
+                <ul class="footer-links">
+                    <li><a href="story.html">About Yaschi</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="story.html">Our Story</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Connect with Us</h3>
+                <ul class="footer-links social-links">
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Let Us Help You</h3>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Your Account</a></li>
+                    <li><a href="returns.html">Returns Centre</a></li>
+                    <li><a href="#">100% Purchase Protection</a></li>
+                    <li><a href="customer-service.html">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-logo-row">
+            <a href="index.html" class="footer-logo-link" aria-label="Yaschi Home">
+                <img src="Yaschi_logo.png" alt="Yaschi Crest Logo" class="footer-logo-img">
+            </a>
+        </div>
+        <div class="footer-bottom-bar">
+            <p class="copyright-text">&copy; 2026 Yaschi.com, Inc. or its affiliates. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Feedback Toast -->
+    <div id="yaschiToast" class="yaschi-toast" role="status" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/header.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+            let product = null;
+
+            if (window.YaschiAPI) {
+                if (productId) {
+                    product = await window.YaschiAPI.getProductById(productId);
+                }
+                if (!product) {
+                    const all = await window.YaschiAPI.getProducts();
+                    if (all && all.length > 0) product = all[0];
+                }
+            }
+
+            const area = document.getElementById('pdpContentArea');
+            if (!product) {
+                area.innerHTML = `
+                    <div style="text-align: center; padding: 60px; background: #fff; border-radius: 12px;">
+                        <h2>Product Not Found</h2>
+                        <p style="margin: 16px 0;">We couldn't find the item you're looking for.</p>
+                        <a href="shop.html" class="btn-filter-apply" style="display:inline-block; padding: 10px 24px; width:auto;">Return to Shop</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Update title & breadcrumbs
+            document.title = `${product.name} | Yaschi`;
+            const bcCatLink = document.getElementById('bcCategoryLink');
+            const bcName = document.getElementById('bcProductName');
+            if (bcCatLink) {
+                bcCatLink.textContent = product.category.charAt(0).toUpperCase() + product.category.slice(1);
+                bcCatLink.href = `shop.html?category=${product.category}`;
+            }
+            if (bcName) bcName.textContent = product.name;
+
+            const images = product.images && product.images.length > 0 ? product.images : ['assets_processed/dresses_1.jpg'];
+            let currentImageIndex = 0;
+            const sizes = product.sizes && product.sizes.length > 0 ? product.sizes : ['One Size'];
+            let selectedSize = sizes[0];
+            let quantity = 1;
+
+            const badgeHtml = product.badge ? `<span class="product-badge" style="position:relative; top:0; left:0; display:inline-block; margin-bottom:12px;">${product.badge}</span>` : '';
+            const discountHtml = product.originalPrice > product.price 
+                ? `<span class="pdp-original-price">₹${product.originalPrice}</span><span class="pdp-discount-tag">${Math.round((1 - product.price/product.originalPrice)*100)}% off</span>` 
+                : '';
+
+            const stockText = product.stock <= 5 
+                ? `<span class="pdp-stock-status low"><i class="fa-solid fa-triangle-exclamation"></i> Only ${product.stock} items left - Order soon!</span>` 
+                : `<span class="pdp-stock-status"><i class="fa-solid fa-circle-check"></i> In Stock (${product.stock} available)</span>`;
+
+            area.innerHTML = `
+                <div class="pdp-layout">
+                    <!-- Left Gallery -->
+                    <div class="pdp-gallery">
+                        <div class="pdp-main-img-box" id="pdpMainBox">
+                            <button type="button" class="pdp-gallery-arrow arrow-prev" id="galleryPrevBtn" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                            <img src="${images[0]}" alt="${product.name}" id="mainPdpImage">
+                            <button type="button" class="pdp-gallery-arrow arrow-next" id="galleryNextBtn" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                            <span class="zoom-hint-tag"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to Zoom</span>
+                        </div>
+                        <div class="pdp-thumbnails-strip">
+                            ${images.map((img, idx) => `
+                                <div class="pdp-thumb-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}" data-src="${img}">
+                                    <img src="${img}" alt="${product.name}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Right Info -->
+                    <div class="pdp-details">
+                        ${badgeHtml}
+                        <span class="pdp-category-tag">${product.category}</span>
+                        <h1 class="pdp-title">${product.name}</h1>
+                        <div class="pdp-rating-row">
+                            <i class="fa-solid fa-star"></i>
+                            <span style="font-weight:700; color:#3a3233;">${product.rating || 4.8}</span>
+                            <span style="color:#777;">• ${product.reviewsCount || 48} Customer Reviews</span>
+                        </div>
+                        
+                        <div class="pdp-price-box">
+                            <span class="pdp-current-price">₹${product.price}</span>
+                            ${discountHtml}
+                        </div>
+                        <div class="pdp-tax-note">Inclusive of all taxes. Free shipping across India.</div>
+                        
+                        ${stockText}
+
+                        <!-- Size Selector Row -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                            <div class="pdp-section-label" style="margin-bottom: 0;">Select Size</div>
+                            <button type="button" class="size-chart-trigger" id="openSizeChartTrigger">
+                                <i class="fa-solid fa-ruler-combined"></i> View Size Chart
+                            </button>
+                        </div>
+                        <div class="pdp-sizes-row" id="pdpSizesRow">
+                            ${sizes.map((s, idx) => `
+                                <button type="button" class="size-pill ${idx === 0 ? 'active' : ''}" data-size="${s}">${s}</button>
+                            `).join('')}
+                        </div>
+
+                        <!-- Quantity Stepper -->
+                        <div class="pdp-section-label">Quantity</div>
+                        <div class="pdp-qty-row">
+                            <div class="qty-stepper">
+                                <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                                <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="${product.stock}">
+                                <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="pdp-buttons-row">
+                            <button type="button" class="btn-pdp-cart" id="btnAddToCart">
+                                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                            </button>
+                            <button type="button" class="btn-pdp-buy" id="btnBuyNow">
+                                Buy Now
+                            </button>
+                            <button type="button" class="btn-pdp-wishlist" id="btnWishlist" data-wishlist-id="${product.id}" title="Save to Wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Accordion Details -->
+                        <div class="pdp-accordion">
+                            <div class="accordion-item open">
+                                <button type="button" class="accordion-header">
+                                    <span>Product Description</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-body">
+                                    ${product.description || 'Crafted with romantic cottagecore details and soft luxurious fabrics.'}
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button type="button" class="accordion-header">
+                                    <span>Fabric & Care</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-body">
+                                    <p><strong>Fabric:</strong> ${(product.details && product.details.fabric) || 'Organic breathable textiles'}</p>
+                                    <p><strong>Care:</strong> ${(product.details && product.details.care) || 'Gentle hand wash cold or dry clean'}</p>
+                                    <p><strong>Fit:</strong> ${(product.details && product.details.fit) || 'Regular cottage silhouette'}</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button type="button" class="accordion-header">
+                                    <span>Shipping & 7-Day Doorstep Returns</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-body">
+                                    <p>Standard delivery across India within 3-5 business days. Express next-day dispatch on prepaid orders.</p>
+                                    <p>Enjoy our 7-day hassle-free doorstep returns and size exchanges guarantee.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Gallery logic (thumbnails, arrows, zoom lightbox)
+            const mainImg = document.getElementById('mainPdpImage');
+            const mainBox = document.getElementById('pdpMainBox');
+            const prevBtn = document.getElementById('galleryPrevBtn');
+            const nextBtn = document.getElementById('galleryNextBtn');
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxCloseBtn');
+
+            function updateImage(idx) {
+                if (idx < 0) idx = images.length - 1;
+                if (idx >= images.length) idx = 0;
+                currentImageIndex = idx;
+                if (mainImg) mainImg.src = images[currentImageIndex];
+                document.querySelectorAll('.pdp-thumb-item').forEach((t, i) => {
+                    t.classList.toggle('active', i === currentImageIndex);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateImage(currentImageIndex - 1);
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateImage(currentImageIndex + 1);
+                });
+            }
+
+            document.querySelectorAll('.pdp-thumb-item').forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const idx = Number(thumb.getAttribute('data-idx'));
+                    updateImage(idx);
+                });
+            });
+
+            if (mainBox) {
+                mainBox.addEventListener('click', () => {
+                    if (lightbox && lightboxImg) {
+                        lightboxImg.src = images[currentImageIndex];
+                        lightbox.classList.add('open');
+                    }
+                });
+            }
+            if (lightboxClose) {
+                lightboxClose.addEventListener('click', () => {
+                    lightbox.classList.remove('open');
+                });
+            }
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) lightbox.classList.remove('open');
+                });
+            }
+
+            // Size Selector
+            document.querySelectorAll('#pdpSizesRow .size-pill').forEach(pill => {
+                pill.addEventListener('click', () => {
+                    document.querySelectorAll('#pdpSizesRow .size-pill').forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    selectedSize = pill.getAttribute('data-size');
+                });
+            });
+
+            // Quantity buttons
+            const qtyInput = document.getElementById('qtyInput');
+            const qtyMinus = document.getElementById('qtyMinus');
+            const qtyPlus = document.getElementById('qtyPlus');
+
+            if (qtyMinus) {
+                qtyMinus.addEventListener('click', () => {
+                    let val = Number(qtyInput.value) || 1;
+                    if (val > 1) {
+                        val--;
+                        qtyInput.value = val;
+                        quantity = val;
+                    }
+                });
+            }
+            if (qtyPlus) {
+                qtyPlus.addEventListener('click', () => {
+                    let val = Number(qtyInput.value) || 1;
+                    if (val < product.stock) {
+                        val++;
+                        qtyInput.value = val;
+                        quantity = val;
+                    }
+                });
+            }
+
+            // Accordion toggle
+            document.querySelectorAll('.accordion-header').forEach(hdr => {
+                hdr.addEventListener('click', () => {
+                    hdr.closest('.accordion-item').classList.toggle('open');
+                });
+            });
+
+            // Add to Bag action
+            const btnAddToCart = document.getElementById('btnAddToCart');
+            if (btnAddToCart && window.YaschiCart) {
+                btnAddToCart.addEventListener('click', () => {
+                    window.YaschiCart.addItem(product, selectedSize, quantity);
+                });
+            }
+
+            // Buy Now action
+            const btnBuyNow = document.getElementById('btnBuyNow');
+            if (btnBuyNow && window.YaschiCart) {
+                btnBuyNow.addEventListener('click', () => {
+                    window.YaschiCart.addItem(product, selectedSize, quantity);
+                    window.location.href = 'checkout.html';
+                });
+            }
+
+            // Wishlist toggle
+            const btnWishlist = document.getElementById('btnWishlist');
+            if (btnWishlist && window.YaschiWishlist) {
+                window.YaschiWishlist.syncButtons();
+                btnWishlist.addEventListener('click', () => {
+                    window.YaschiWishlist.toggleItem(product);
+                });
+            }
+
+            // =========================================================================
+            // SIZE CHART LOGIC & MODAL
+            // =========================================================================
+            const sizeChartModal = document.getElementById('sizeChartModal');
+            const openChartBtn = document.getElementById('openSizeChartTrigger');
+            const closeChartBtn = document.getElementById('closeSizeChartBtn');
+            const tbody = document.getElementById('sizeChartTbody');
+            const unitInchesBtn = document.getElementById('unitInchesBtn');
+            const unitCmBtn = document.getElementById('unitCmBtn');
+
+            let currentUnit = 'in';
+            const sizeData = [
+                { size: 'XS', bustIn: '32"', waistIn: '24"', hipsIn: '34"', bustCm: '81 cm', waistCm: '61 cm', hipsCm: '86 cm', std: 'UK 6 / US 2' },
+                { size: 'S',  bustIn: '34"', waistIn: '26"', hipsIn: '36"', bustCm: '86 cm', waistCm: '66 cm', hipsCm: '91 cm', std: 'UK 8 / US 4' },
+                { size: 'M',  bustIn: '36"', waistIn: '28"', hipsIn: '38"', bustCm: '91 cm', waistCm: '71 cm', hipsCm: '96 cm', std: 'UK 10 / US 6' },
+                { size: 'L',  bustIn: '38"', waistIn: '30"', hipsIn: '40"', bustCm: '96 cm', waistCm: '76 cm', hipsCm: '101 cm', std: 'UK 12 / US 8' },
+                { size: 'XL', bustIn: '40"', waistIn: '32"', hipsIn: '42"', bustCm: '101 cm', waistCm: '81 cm', hipsCm: '106 cm', std: 'UK 14 / US 10' }
+            ];
+
+            function renderSizeChartTable() {
+                if (!tbody) return;
+                tbody.innerHTML = sizeData.map(d => `
+                    <tr>
+                        <td><strong>${d.size}</strong></td>
+                        <td>${currentUnit === 'in' ? d.bustIn : d.bustCm}</td>
+                        <td>${currentUnit === 'in' ? d.waistIn : d.waistCm}</td>
+                        <td>${currentUnit === 'in' ? d.hipsIn : d.hipsCm}</td>
+                        <td>${d.std}</td>
+                    </tr>
+                `).join('');
+            }
+            renderSizeChartTable();
+
+            if (openChartBtn && sizeChartModal) {
+                openChartBtn.addEventListener('click', () => {
+                    sizeChartModal.classList.add('open');
+                });
+            }
+            if (closeChartBtn && sizeChartModal) {
+                closeChartBtn.addEventListener('click', () => {
+                    sizeChartModal.classList.remove('open');
+                });
+            }
+            if (sizeChartModal) {
+                sizeChartModal.addEventListener('click', (e) => {
+                    if (e.target === sizeChartModal) sizeChartModal.classList.remove('open');
+                });
+            }
+            if (unitInchesBtn && unitCmBtn) {
+                unitInchesBtn.addEventListener('click', () => {
+                    currentUnit = 'in';
+                    unitInchesBtn.classList.add('active');
+                    unitCmBtn.classList.remove('active');
+                    renderSizeChartTable();
+                });
+                unitCmBtn.addEventListener('click', () => {
+                    currentUnit = 'cm';
+                    unitCmBtn.classList.add('active');
+                    unitInchesBtn.classList.remove('active');
+                    renderSizeChartTable();
+                });
+            }
+
+            // =========================================================================
+            // CUSTOMER REVIEWS LOGIC
+            // =========================================================================
+            const reviewsContainer = document.getElementById('reviewsListContainer');
+            const reviewModal = document.getElementById('reviewModal');
+            const openReviewBtn = document.getElementById('openReviewModalBtn');
+            const closeReviewBtn = document.getElementById('closeReviewModalBtn');
+            const writeReviewForm = document.getElementById('writeReviewForm');
+
+            const defaultReviews = [
+                {
+                    name: 'Aurelia S.',
+                    rating: 5,
+                    date: 'September 4, 2026',
+                    comment: 'Absolutely breathtaking! The fabric feels so luxurious against the skin and the romantic silhouette makes me feel like I walked out of an 18th-century painting. The size chart was 100% accurate.'
+                },
+                {
+                    name: 'Seraphina K.',
+                    rating: 5,
+                    date: 'August 28, 2026',
+                    comment: 'The lace detailing and stitch quality are outstanding. I received so many compliments at high tea. Free shipping arrived in 3 days in exquisite packaging.'
+                },
+                {
+                    name: 'Meera P.',
+                    rating: 4,
+                    date: 'August 15, 2026',
+                    comment: 'A true cottagecore staple. Soft boning provides gentle support without feeling restrictive. Wore it all afternoon with complete comfort.'
+                }
+            ];
+
+            const storageKey = `yaschi_reviews_${product.id}`;
+            function loadReviews() {
+                const stored = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                const allReviews = [...stored, ...defaultReviews];
+                if (reviewsContainer) {
+                    reviewsContainer.innerHTML = allReviews.map(r => {
+                        const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+                        const initial = r.name.charAt(0).toUpperCase();
+                        return `
+                            <div class="review-item-card">
+                                <div class="review-item-header">
+                                    <div class="reviewer-profile">
+                                        <div class="reviewer-avatar">${initial}</div>
+                                        <div>
+                                            <div class="reviewer-name">${r.name}</div>
+                                            <span class="verified-buyer-badge"><i class="fa-solid fa-circle-check"></i> Verified Buyer</span>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">${r.date}</span>
+                                </div>
+                                <div class="stars-row" style="margin-bottom:6px; font-size:0.95rem;">${stars}</div>
+                                <p class="review-comment">${r.comment}</p>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            }
+            loadReviews();
+
+            if (openReviewBtn && reviewModal) {
+                openReviewBtn.addEventListener('click', () => {
+                    reviewModal.classList.add('open');
+                });
+            }
+            if (closeReviewBtn && reviewModal) {
+                closeReviewBtn.addEventListener('click', () => {
+                    reviewModal.classList.remove('open');
+                });
+            }
+            if (reviewModal) {
+                reviewModal.addEventListener('click', (e) => {
+                    if (e.target === reviewModal) reviewModal.classList.remove('open');
+                });
+            }
+
+            if (writeReviewForm) {
+                writeReviewForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const rating = Number(document.getElementById('reviewRatingInput').value) || 5;
+                    const name = document.getElementById('reviewerNameInput').value.trim();
+                    const comment = document.getElementById('reviewerCommentInput').value.trim();
+
+                    const stored = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                    stored.unshift({
+                        name: name,
+                        rating: rating,
+                        date: 'Just now',
+                        comment: comment
+                    });
+                    localStorage.setItem(storageKey, JSON.stringify(stored));
+
+                    loadReviews();
+                    writeReviewForm.reset();
+                    if (reviewModal) reviewModal.classList.remove('open');
+                    if (window.YaschiCart && window.YaschiCart.showToast) {
+                        window.YaschiCart.showToast('Thank you! Your review has been posted.');
+                    }
+                });
+            }
+
+            // =========================================================================
+            // RELATED PRODUCTS
+            // =========================================================================
+            const relatedGrid = document.getElementById('relatedGrid');
+            if (relatedGrid) {
+                const sameCategory = await window.YaschiAPI.getProducts({ category: product.category });
+                const related = sameCategory.filter(p => String(p.id) !== String(product.id)).slice(0, 4);
+
+                if (related.length > 0) {
+                    relatedGrid.innerHTML = related.map(p => {
+                        const img = (p.images && p.images[0]) || 'assets_processed/dresses_1.jpg';
+                        return `
+                            <div class="product-card" data-product-id="${p.id}">
+                                <div class="product-card-thumb">
+                                    <button type="button" class="product-wishlist-btn" data-wishlist-id="${p.id}" aria-label="Add to wishlist">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                    <a href="product.html?id=${p.id}">
+                                        <img src="${img}" alt="${p.name}" loading="lazy">
+                                    </a>
+                                </div>
+                                <div class="product-card-body">
+                                    <span class="product-card-category">${p.category}</span>
+                                    <h3 class="product-card-title"><a href="product.html?id=${p.id}">${p.name}</a></h3>
+                                    <div class="product-card-price-row">
+                                        <span class="current-price">₹${p.price}</span>
+                                    </div>
+                                    <button type="button" class="product-card-btn btn-quick-add" data-id="${p.id}">
+                                        <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    if (window.YaschiWishlist) window.YaschiWishlist.syncButtons();
+
+                    relatedGrid.querySelectorAll('.product-wishlist-btn').forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            const pid = btn.getAttribute('data-wishlist-id');
+                            const prod = await window.YaschiAPI.getProductById(pid);
+                            if (prod) window.YaschiWishlist.toggleItem(prod);
+                        });
+                    });
+
+                    relatedGrid.querySelectorAll('.btn-quick-add').forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            const pid = btn.getAttribute('data-id');
+                            const prod = await window.YaschiAPI.getProductById(pid);
+                            if (prod) {
+                                const s = (prod.sizes && prod.sizes[0]) || 'M';
+                                window.YaschiCart.addItem(prod, s, 1);
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

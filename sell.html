@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell on Yaschi | Artisan & Designer Partnership</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Unified Header -->
+    <header class="site-header" id="siteHeader">
+        <div class="top-nav">
+            <div class="header-left">
+                <a href="index.html" class="brand-logo-link" aria-label="Yaschi Home">
+                    <img src="Yaschi_logo.png" alt="Yaschi Couture" class="header-logo-img">
+                </a>
+                <div class="location-box" id="locationSelector" role="button" tabindex="0" aria-label="Delivery location selector">
+                    <i class="fa-solid fa-location-dot location-icon"></i>
+                    <div class="location-text">
+                        <span class="loc-sub">Deliver to</span>
+                        <span class="loc-main" id="userLocationText">India</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-container" role="search">
+                <div class="search-box">
+                    <select id="searchCategory" class="search-category-select" aria-label="Select department">
+                        <option value="all">All</option>
+                        <option value="corsets">Corsets</option>
+                        <option value="dresses">Dresses</option>
+                        <option value="skirts">Skirts</option>
+                        <option value="shrugs">Shrugs</option>
+                        <option value="tops">Tops & Tunics</option>
+                        <option value="bottoms">Bottoms</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="makeup">Makeup</option>
+                    </select>
+                    <input type="text" id="search" class="search-input" placeholder="Search Yaschi" aria-label="Search Yaschi">
+                    <button type="button" id="searchButton" class="search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <a href="signin.html" class="action-item action-signin"><span class="action-small">Hello, sign in</span><span class="action-main">Account & Lists <i class="fa-solid fa-caret-down mini-caret"></i></span></a>
+                <a href="returns.html" class="action-item action-returns"><span class="action-small">Returns</span><span class="action-main">& Orders</span></a>
+                <a href="wishlist.html" class="action-item" title="Wishlist"><i class="fa-regular fa-heart" style="font-size:1.4rem; color:var(--color-blush);"></i></a>
+                <a href="cart.html" class="action-item action-cart" id="cartButton" aria-label="View Shopping Cart">
+                    <div class="cart-icon-box"><i class="fa-solid fa-basket-shopping cart-icon"></i><span id="cart-count" class="cart-badge">0</span></div>
+                    <span class="cart-text">Cart</span>
+                </a>
+            </div>
+        </div>
+
+        <nav class="sub-nav" aria-label="Primary Navigation">
+            <div class="sub-nav-left">
+                <button class="panel-all-btn" id="drawerOpenBtn"><i class="fa-solid fa-bars"></i><span>All</span></button>
+                <ul class="nav-links">
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="customer-service.html">Customer Service</a></li>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                    <li><a href="sell.html" class="active" style="color:var(--color-rose-gold); font-weight:700;">Sell</a></li>
+                </ul>
+            </div>
+            <div class="sub-nav-right"><a href="deals.html" class="deals-highlight">Shop Deals on Clothes, Makeup & more.</a></div>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header"><div class="drawer-user"><i class="fa-solid fa-circle-user"></i><span>Hello, Sign in</span></div><button class="drawer-close" id="drawerCloseBtn" aria-label="Close menu">&times;</button></div>
+        <div class="drawer-content">
+            <h3>Shop by Category</h3>
+            <ul>
+                <li><a href="corsets.html"><i class="fa-solid fa-angle-right"></i> Corsets</a></li>
+                <li><a href="dresses.html"><i class="fa-solid fa-angle-right"></i> Dresses</a></li>
+                <li><a href="skirts.html"><i class="fa-solid fa-angle-right"></i> Skirts</a></li>
+                <li><a href="shrugs.html"><i class="fa-solid fa-angle-right"></i> Shrugs</a></li>
+                <li><a href="tops-and-tunics.html"><i class="fa-solid fa-angle-right"></i> Tops & Tunics</a></li>
+                <li><a href="bottoms.html"><i class="fa-solid fa-angle-right"></i> Bottoms</a></li>
+                <li><a href="jwelleries.html"><i class="fa-solid fa-angle-right"></i> Accessories</a></li>
+                <li><a href="makeup.html"><i class="fa-solid fa-angle-right"></i> Makeup</a></li>
+            </ul>
+            <div class="drawer-divider"></div>
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="deals.html"><i class="fa-solid fa-tag"></i> Today's Deals</a></li>
+                <li><a href="gift-cards.html"><i class="fa-solid fa-gift"></i> Gift Cards</a></li>
+                <li><a href="sell.html"><i class="fa-solid fa-store"></i> Sell on Yaschi</a></li>
+                <li><a href="story.html"><i class="fa-solid fa-book-open"></i> Our Story</a></li>
+                <li><a href="customer-service.html"><i class="fa-solid fa-headset"></i> Customer Service</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="shop-page-wrapper">
+        <!-- Sell Hero -->
+        <div class="sell-hero-banner">
+            <span style="background: var(--color-title-sage); color: #fff; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 14px; border-radius: 14px; display: inline-block; margin-bottom: 12px;">Artisan & Atelier Portal</span>
+            <h1 style="font-family: var(--font-serif-display); font-size: 2.8rem; color: var(--color-charcoal); margin-bottom: 12px;">Sell with Yaschi</h1>
+            <p style="color: #666; font-size: 1.05rem; max-width: 650px; margin: 0 auto 24px; line-height: 1.6;">
+                Are you an independent designer, slow-fashion atelier, or cottagecore artisan? Showcase your heirloom dresses, tapestries, corsets, and natural cosmetics to our devoted community.
+            </p>
+            <a href="#applySection" class="btn-filter-apply" style="display:inline-block; width:auto; padding: 12px 36px; border-radius: 25px; font-size: 1rem;">
+                Apply to Sell <i class="fa-solid fa-arrow-down" style="margin-left: 6px;"></i>
+            </a>
+        </div>
+
+        <!-- 3 Pillars Grid -->
+        <div class="sell-pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon-box">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <h3 style="font-family: var(--font-serif-display); font-size: 1.25rem; color: var(--color-charcoal); margin-bottom: 8px;">Couture-Loving Audience</h3>
+                <p style="font-size: 0.88rem; color: #666; line-height: 1.6;">
+                    Connect directly with discerning patrons searching specifically for Victorian lace, romantic smocking, botanical prints, and timeless silhouettes.
+                </p>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon-box">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h3 style="font-family: var(--font-serif-display); font-size: 1.25rem; color: var(--color-charcoal); margin-bottom: 8px;">Fair Artisan Terms</h3>
+                <p style="font-size: 0.88rem; color: #666; line-height: 1.6;">
+                    Zero upfront listing or membership fees. Transparent 10% commission only on completed orders with rapid bi-weekly direct bank settlements.
+                </p>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon-box">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3 style="font-family: var(--font-serif-display); font-size: 1.25rem; color: var(--color-charcoal); margin-bottom: 8px;">Fulfillment & Care</h3>
+                <p style="font-size: 0.88rem; color: #666; line-height: 1.6;">
+                    We take care of doorstep insured pickups across India, express delivery, white-glove packaging, customer support, and return handling.
+                </p>
+            </div>
+        </div>
+
+        <!-- Application Form Section -->
+        <section id="applySection" style="max-width: 800px; margin: 0 auto 60px; background: #ffffff; border: 1px solid rgba(216, 180, 182, 0.4); border-radius: 18px; padding: 40px; box-shadow: var(--shadow-card);">
+            <div style="text-align: center; margin-bottom: 28px;">
+                <span style="color: var(--color-rose-gold); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Join Our Collective</span>
+                <h2 style="font-family: var(--font-serif-display); font-size: 2rem; color: var(--color-title-sage); margin-top: 4px;">Artisan Partner Application</h2>
+                <p style="font-size: 0.9rem; color: #777;">Fill in your details. Our curatorial jury reviews all submissions within 48 hours.</p>
+            </div>
+
+            <form id="artisanApplyForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Brand / Atelier Name *</label>
+                        <input type="text" id="sellerBrandName" required placeholder="e.g. Willow & Wildflower Studio" style="width:100%; padding:12px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Founder / Contact Name *</label>
+                        <input type="text" id="sellerFounderName" required placeholder="e.g. Eleanor Vance" style="width:100%; padding:12px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem;">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Email Address *</label>
+                        <input type="email" id="sellerEmail" required placeholder="eleanor@willowwildflower.com" style="width:100%; padding:12px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Phone / WhatsApp *</label>
+                        <input type="tel" id="sellerPhone" required placeholder="+91 98765 43210" style="width:100%; padding:12px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem;">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Instagram / Portfolio URL *</label>
+                        <input type="url" id="sellerPortfolio" required placeholder="https://instagram.com/your_atelier" style="width:100%; padding:12px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Primary Craft Department *</label>
+                        <select id="sellerCategory" required style="width:100%; padding:12px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem; background:#fff;">
+                            <option value="corsets">Corsets & Stays</option>
+                            <option value="dresses">Cottagecore & Tiered Dresses</option>
+                            <option value="skirts">Artisan Skirts & Petticoats</option>
+                            <option value="shrugs">Lace Boleros & Shrugs</option>
+                            <option value="tops">Romantic Tops & Tunics</option>
+                            <option value="accessories">Botanical Jewelry & Headpieces</option>
+                            <option value="makeup">Natural & Vintage Cosmetics</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #555; display: block; margin-bottom: 6px;">Atelier Story & Craft Philosophy *</label>
+                    <textarea id="sellerBio" required rows="4" placeholder="Tell us about the materials you use, your handcrafting process, and what makes your creations unique..." style="width:100%; padding:12px; border:1px solid #d8b4b6; border-radius:8px; outline:none; font-size:0.95rem; font-family:inherit;"></textarea>
+                </div>
+
+                <button type="submit" class="btn-filter-apply" style="width:100%; padding: 14px; font-size: 1.05rem; border-radius: 25px;">
+                    Submit Artisan Application <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer class="site-footer">
+        <a href="#" class="back-to-top" id="backToTopBtn">Back to Top</a>
+        <div class="footer-columns-container">
+            <div class="footer-col">
+                <h3 class="footer-col-title">Get to Know Us</h3>
+                <ul class="footer-links">
+                    <li><a href="story.html">About Yaschi</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="story.html">Our Story</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Connect with Us</h3>
+                <ul class="footer-links social-links">
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-col-title">Let Us Help You</h3>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Your Account</a></li>
+                    <li><a href="returns.html">Returns Centre</a></li>
+                    <li><a href="#">100% Purchase Protection</a></li>
+                    <li><a href="customer-service.html">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-logo-row">
+            <a href="index.html" class="footer-logo-link"><img src="Yaschi_logo.png" alt="Yaschi Crest Logo" class="footer-logo-img"></a>
+        </div>
+        <div class="footer-bottom-bar">
+            <p class="copyright-text">&copy; 2026 Yaschi.com, Inc. or its affiliates. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="yaschiToast" class="yaschi-toast" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/header.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('artisanApplyForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const brand = document.getElementById('sellerBrandName').value;
+                    const founder = document.getElementById('sellerFounderName').value;
+                    const email = document.getElementById('sellerEmail').value;
+                    const category = document.getElementById('sellerCategory').value;
+
+                    const applications = JSON.parse(localStorage.getItem('yaschi_artisan_applications') || '[]');
+                    applications.push({
+                        id: 'artisan-' + Date.now(),
+                        brand,
+                        founder,
+                        email,
+                        category,
+                        date: new Date().toISOString()
+                    });
+                    localStorage.setItem('yaschi_artisan_applications', JSON.stringify(applications));
+
+                    if (window.YaschiCart && window.YaschiCart.showToast) {
+                        window.YaschiCart.showToast(`Thank you, ${founder}! Your application for "${brand}" has been submitted.`);
+                    }
+                    form.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

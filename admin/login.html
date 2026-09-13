@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaschi Admin Login | CMS</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .admin-login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e2e8e4;
+            padding: 20px;
+        }
+        .admin-login-card {
+            max-width: 400px;
+            width: 100%;
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px 30px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .admin-logo {
+            width: 120px;
+            margin: 0 auto 16px;
+            display: block;
+        }
+        .admin-badge {
+            display: inline-block;
+            background: #e8f0eb;
+            color: #537562;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-wrapper">
+        <div class="admin-login-card">
+            <img src="../Yaschi_logo.png" alt="Yaschi" class="admin-logo">
+            <span class="admin-badge">Admin & CMS Portal</span>
+            <h2 style="font-family: var(--font-serif-display); color: var(--color-text-dark); margin-bottom: 6px;">Store Management</h2>
+            <p style="color: #777; font-size: 0.88rem; margin-bottom: 24px;">Sign in to manage catalog, orders, and hero media.</p>
+
+            <form id="adminLoginForm">
+                <div class="form-group" style="text-align: left;">
+                    <label class="form-label" for="adminEmail">Email Address</label>
+                    <input type="email" id="adminEmail" class="form-input" value="admin@yaschi.com" required>
+                </div>
+                <div class="form-group" style="text-align: left; margin-bottom: 20px;">
+                    <label class="form-label" for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" class="form-input" value="yaschi123" required>
+                </div>
+                <button type="submit" class="btn-checkout" style="margin-top: 0; width: 100%;">
+                    Log In to Dashboard &rarr;
+                </button>
+            </form>
+
+            <div style="background: #faf6f4; border: 1px dashed #d8b4b6; border-radius: 8px; padding: 10px; margin-top: 20px; font-size: 0.8rem; color: #666;">
+                <strong>Demo Credentials:</strong><br>
+                Email: <code>admin@yaschi.com</code><br>
+                Password: <code>yaschi123</code>
+            </div>
+
+            <a href="../index.html" style="display: block; margin-top: 20px; font-size: 0.85rem; color: var(--color-title-sage);">
+                &larr; Back to Yaschi Storefront
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value.trim();
+            const pass = document.getElementById('adminPassword').value.trim();
+
+            if (email && pass) {
+                localStorage.setItem('yaschi_admin_logged_in', 'true');
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
