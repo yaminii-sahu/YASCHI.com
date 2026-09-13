@@ -1,0 +1,14 @@
+# Private CMS
+/admin/
+
+# Environment secrets
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+
+# Build files
+dist/
+build/
