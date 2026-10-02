@@ -47,22 +47,43 @@
         const mobileDrawer = document.getElementById('mobileDrawer');
         const drawerOverlay = document.getElementById('drawerOverlay');
 
+        // Reset any cached active/open state on page load
+        if (mobileDrawer) {
+            mobileDrawer.classList.remove('open', 'active');
+        }
+        if (drawerOverlay) {
+            drawerOverlay.classList.remove('open', 'active');
+        }
+        document.body.style.overflow = '';
+
         function openDrawer() {
-            if (mobileDrawer) mobileDrawer.classList.add('open');
-            if (drawerOverlay) drawerOverlay.classList.add('active');
+            if (mobileDrawer) {
+                mobileDrawer.classList.add('open');
+                mobileDrawer.classList.add('active');
+            }
+            if (drawerOverlay) {
+                drawerOverlay.classList.add('open');
+                drawerOverlay.classList.add('active');
+            }
             document.body.style.overflow = 'hidden';
         }
 
         function closeDrawer() {
-            if (mobileDrawer) mobileDrawer.classList.remove('open');
-            if (drawerOverlay) drawerOverlay.classList.remove('active');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                mobileDrawer.classList.remove('active');
+            }
+            if (drawerOverlay) {
+                drawerOverlay.classList.remove('open');
+                drawerOverlay.classList.remove('active');
+            }
             document.body.style.overflow = '';
         }
 
         if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openDrawer);
-        if (drawerOpenBtn) drawerOpenBtn.addEventListener('click', openDrawer);
         if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
         if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
 
         // =====================================================================
         // 3. SLIDE-OUT CART DRAWER
@@ -104,14 +125,26 @@
 
         function openCartDrawer() {
             renderCartDrawerItems();
-            if (cartDrawer) cartDrawer.classList.add('open');
-            if (cartDrawerOverlay) cartDrawerOverlay.classList.add('active');
+            if (cartDrawer) {
+                cartDrawer.classList.add('open');
+                cartDrawer.classList.add('active');
+            }
+            if (cartDrawerOverlay) {
+                cartDrawerOverlay.classList.add('open');
+                cartDrawerOverlay.classList.add('active');
+            }
             document.body.style.overflow = 'hidden';
         }
 
         function closeCartDrawer() {
-            if (cartDrawer) cartDrawer.classList.remove('open');
-            if (cartDrawerOverlay) cartDrawerOverlay.classList.remove('active');
+            if (cartDrawer) {
+                cartDrawer.classList.remove('open');
+                cartDrawer.classList.remove('active');
+            }
+            if (cartDrawerOverlay) {
+                cartDrawerOverlay.classList.remove('open');
+                cartDrawerOverlay.classList.remove('active');
+            }
             document.body.style.overflow = '';
         }
 
@@ -364,19 +397,34 @@
         // =====================================================================
         // 5b. "ALL" COLLECTION / ALL PRODUCTS HANDLERS
         // =====================================================================
-        const allCollectionBtns = document.querySelectorAll('#allCollectionBtn, .panel-all-link, #drawerAllLink');
+        const allCollectionBtns = document.querySelectorAll('#allCollectionBtn, .panel-all-btn, #drawerOpenBtn, .panel-all-link, #drawerAllLink');
         allCollectionBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeDrawer();
+                closeCartDrawer();
                 const isShopPage = window.location.pathname.endsWith('shop.html');
                 if (isShopPage && window.YaschiShop && typeof window.YaschiShop.applyFilters === 'function') {
-                    e.preventDefault();
                     if (searchCategory) searchCategory.value = 'all';
                     if (searchInput) searchInput.value = '';
                     window.history.pushState(null, '', 'shop.html');
-                    window.YaschiShop.applyFilters({ category: 'all', search: '' });
-                    closeDrawer();
+                    window.YaschiShop.applyFilters({ category: 'all', search: '', maxPrice: null });
+                } else {
+                    window.location.href = 'shop.html?category=all';
                 }
             });
+        });
+
+        // Global Escape key listener to dismiss any open drawers or modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' || e.keyCode === 27) {
+                closeDrawer();
+                closeCartDrawer();
+                const locModal = document.getElementById('locationModal');
+                if (locModal) {
+                    locModal.classList.remove('active', 'open');
+                }
+            }
         });
 
         // =====================================================================
