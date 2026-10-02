@@ -778,6 +778,16 @@ const INITIAL_HERO_SETTINGS = {
 };
 
 // Export to window for global access
-window.INITIAL_CATEGORIES = INITIAL_CATEGORIES;
-window.INITIAL_PRODUCTS = INITIAL_PRODUCTS;
-window.INITIAL_HERO_SETTINGS = INITIAL_HERO_SETTINGS;
+if (typeof window !== 'undefined') {
+    window.INITIAL_CATEGORIES = INITIAL_CATEGORIES;
+    window.INITIAL_PRODUCTS = INITIAL_PRODUCTS;
+    window.INITIAL_HERO_SETTINGS = INITIAL_HERO_SETTINGS;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        INITIAL_CATEGORIES,
+        INITIAL_PRODUCTS,
+        INITIAL_HERO_SETTINGS
+    };
+}

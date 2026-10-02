@@ -71,6 +71,14 @@
                     <span class="action-main">& Orders</span>
                 </a>
 
+                <a href="wishlist.html" class="action-item action-wishlist" id="wishlistButton" aria-label="View Wishlist" title="Wishlist">
+                    <div class="wishlist-icon-box">
+                        <i class="fa-regular fa-heart wishlist-icon"></i>
+                        <span id="wishlist-count" class="cart-badge wishlist-badge" style="display:none;">0</span>
+                    </div>
+                    <span class="wishlist-text">Wishlist</span>
+                </a>
+
                 <a href="cart.html" class="action-item action-cart" id="cartButton" aria-label="View Shopping Cart">
                     <div class="cart-icon-box">
                         <i class="fa-solid fa-basket-shopping cart-icon"></i>
@@ -83,11 +91,12 @@
 
         <nav class="sub-nav" aria-label="Primary Navigation">
             <div class="sub-nav-left">
-                <button class="panel-all-btn" id="drawerOpenBtn">
+                <button class="panel-all-btn" id="drawerOpenBtn" title="Browse all categories & collections">
                     <i class="fa-solid fa-bars"></i>
                     <span>All</span>
                 </button>
                 <ul class="nav-links">
+                    <li><a href="shop.html?category=all" id="allCollectionBtn" class="nav-link-all">All Products</a></li>
                     <li><a href="deals.html">Today's Deals</a></li>
                     <li><a href="customer-service.html">Customer Service</a></li>
                     <li><a href="gift-cards.html">Gift Cards</a></li>
@@ -115,6 +124,7 @@
         <div class="drawer-content">
             <h3>Shop by Category</h3>
             <ul>
+                <li><a href="shop.html?category=all" id="drawerAllLink" style="font-weight:700; color:var(--color-blush);"><i class="fa-solid fa-border-all"></i> All Products</a></li>
                 <li><a href="corsets.html"><i class="fa-solid fa-angle-right"></i> Corsets</a></li>
                 <li><a href="dresses.html"><i class="fa-solid fa-angle-right"></i> Dresses</a></li>
                 <li><a href="skirts.html"><i class="fa-solid fa-angle-right"></i> Skirts</a></li>

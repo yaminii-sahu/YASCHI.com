@@ -1,6 +1,6 @@
 /**
  * Yaschi E-Commerce — Central Unified API Layer
- * Seamlessly integrates Supabase with seeded localStorage fallback.
+ * Seamlessly integrates Express REST API (/api/*) and Supabase with seeded localStorage fallback.
  */
 
 const STORAGE_KEYS = {
@@ -30,9 +30,30 @@ const YaschiAPI = {
     },
 
     /**
+     * Check if running under HTTP/HTTPS server (can reach /api/*)
+     */
+    isHttp: function() {
+        return typeof window !== 'undefined' && window.location && window.location.protocol.startsWith('http');
+    },
+
+    /**
      * Get all categories
      */
     getCategories: async function() {
+        // 1. Try Express backend
+        if (this.isHttp()) {
+            try {
+                const res = await fetch('/api/categories');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && Array.isArray(data.categories) && data.categories.length > 0) {
+                        return data.categories;
+                    }
+                }
+            } catch (e) {}
+        }
+
+        // 2. Try Supabase
         const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
         if (client) {
             try {
@@ -42,6 +63,8 @@ const YaschiAPI = {
                 console.warn('[Yaschi API] Supabase categories fetch failed, using fallback:', err);
             }
         }
+
+        // 3. Fallback to localStorage
         const local = localStorage.getItem(STORAGE_KEYS.CATEGORIES);
         return local ? JSON.parse(local) : (window.INITIAL_CATEGORIES || []);
     },
@@ -50,9 +73,31 @@ const YaschiAPI = {
      * Get products with filtering, search, and sorting
      */
     getProducts: async function(filter = {}) {
-        let products = [];
-        const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
+        // 1. Try Express backend
+        if (this.isHttp()) {
+            try {
+                const params = new URLSearchParams();
+                if (filter.category && filter.category !== 'all') params.set('category', filter.category);
+                if (filter.search) params.set('search', filter.search);
+                if (filter.sort) params.set('sort', filter.sort);
+                if (filter.minPrice !== undefined && filter.minPrice !== '') params.set('minPrice', filter.minPrice);
+                if (filter.maxPrice !== undefined && filter.maxPrice !== '') params.set('maxPrice', filter.maxPrice);
+                if (filter.featured) params.set('featured', 'true');
 
+                const res = await fetch('/api/products' + (params.toString() ? '?' + params.toString() : ''));
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && Array.isArray(data.products) && data.products.length > 0) {
+                        return data.products;
+                    }
+                }
+            } catch (e) {}
+        }
+
+        let products = [];
+
+        // 2. Try Supabase
+        const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
         if (client) {
             try {
                 const { data, error } = await client.from('products').select('*');
@@ -64,6 +109,7 @@ const YaschiAPI = {
             }
         }
 
+        // 3. Fallback to localStorage
         if (products.length === 0) {
             const local = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
             products = local ? JSON.parse(local) : (window.INITIAL_PRODUCTS || []);
@@ -129,6 +175,19 @@ const YaschiAPI = {
      */
     getProductById: async function(id) {
         if (!id) return null;
+
+        // 1. Try Express backend
+        if (this.isHttp()) {
+            try {
+                const res = await fetch(`/api/products/${id}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.product) return data.product;
+                }
+            } catch (e) {}
+        }
+
+        // 2. Fallback to getProducts
         const products = await this.getProducts();
         return products.find(p => String(p.id) === String(id)) || null;
     },
@@ -146,33 +205,55 @@ const YaschiAPI = {
      * Save product (Create or Update)
      */
     saveProduct: async function(productData) {
+        let savedProduct = null;
+
+        // 1. Try Express backend
+        if (this.isHttp()) {
+            try {
+                const isUpdate = Boolean(productData.id);
+                const url = isUpdate ? `/api/products/${productData.id}` : '/api/products';
+                const method = isUpdate ? 'PUT' : 'POST';
+                const res = await fetch(url, {
+                    method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(productData)
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.product) savedProduct = data.product;
+                }
+            } catch (e) {}
+        }
+
+        // 2. Persist in localStorage
         const local = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
         let products = local ? JSON.parse(local) : (window.INITIAL_PRODUCTS || []);
         
-        let savedProduct = null;
         if (productData.id) {
             const index = products.findIndex(p => String(p.id) === String(productData.id));
             if (index !== -1) {
                 products[index] = { ...products[index], ...productData };
-                savedProduct = products[index];
+                if (!savedProduct) savedProduct = products[index];
             } else {
-                savedProduct = { ...productData };
+                if (!savedProduct) savedProduct = { ...productData };
                 products.push(savedProduct);
             }
         } else {
-            savedProduct = {
-                ...productData,
-                id: 'prod_' + Date.now(),
-                slug: (productData.name || 'product').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
-            };
+            if (!savedProduct) {
+                savedProduct = {
+                    ...productData,
+                    id: 'prod_' + Date.now(),
+                    slug: (productData.name || 'product').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+                };
+            }
             products.unshift(savedProduct);
         }
 
         localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(products));
 
-        // Sync to Supabase if connected
+        // 3. Sync to Supabase if connected
         const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
-        if (client) {
+        if (client && savedProduct) {
             try {
                 await client.from('products').upsert([savedProduct]);
             } catch (err) {
@@ -187,12 +268,17 @@ const YaschiAPI = {
      * Delete product by ID
      */
     deleteProduct: async function(id) {
+        if (this.isHttp()) {
+            try {
+                await fetch(`/api/products/${id}`, { method: 'DELETE' });
+            } catch (e) {}
+        }
+
         const local = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
         let products = local ? JSON.parse(local) : [];
         products = products.filter(p => String(p.id) !== String(id));
         localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(products));
 
-        // Delete from Supabase if connected
         const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
         if (client) {
             try {
@@ -208,6 +294,16 @@ const YaschiAPI = {
      * Get Hero settings
      */
     getHeroSettings: async function() {
+        if (this.isHttp()) {
+            try {
+                const res = await fetch('/api/settings/hero');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.settings) return data.settings;
+                }
+            } catch (e) {}
+        }
+
         const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
         if (client) {
             try {
@@ -225,6 +321,16 @@ const YaschiAPI = {
      * Save Hero settings
      */
     saveHeroSettings: async function(settings) {
+        if (this.isHttp()) {
+            try {
+                await fetch('/api/settings/hero', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(settings)
+                });
+            } catch (e) {}
+        }
+
         localStorage.setItem(STORAGE_KEYS.HERO, JSON.stringify(settings));
         const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
         if (client) {
@@ -248,6 +354,20 @@ const YaschiAPI = {
             ...orderData
         };
 
+        if (this.isHttp()) {
+            try {
+                const res = await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(order)
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.order) return data.order;
+                }
+            } catch (e) {}
+        }
+
         const local = localStorage.getItem(STORAGE_KEYS.ORDERS);
         const orders = local ? JSON.parse(local) : [];
         orders.unshift(order);
@@ -269,6 +389,16 @@ const YaschiAPI = {
      * Get all orders
      */
     getOrders: async function() {
+        if (this.isHttp()) {
+            try {
+                const res = await fetch('/api/orders');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && Array.isArray(data.orders)) return data.orders;
+                }
+            } catch (e) {}
+        }
+
         const client = window.getSupabaseClient ? window.getSupabaseClient() : null;
         if (client) {
             try {
@@ -293,15 +423,12 @@ const YaschiAPI = {
         const categories = JSON.parse(localStorage.getItem(STORAGE_KEYS.CATEGORIES) || '[]');
         const hero = JSON.parse(localStorage.getItem(STORAGE_KEYS.HERO) || '{}');
 
-        // Upsert categories
         if (categories.length > 0) {
             await client.from('categories').upsert(categories);
         }
-        // Upsert products
         if (products.length > 0) {
             await client.from('products').upsert(products);
         }
-        // Upsert hero
         if (hero.title) {
             await client.from('hero_settings').upsert([{ id: 1, ...hero }]);
         }

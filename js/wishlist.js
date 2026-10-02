@@ -24,7 +24,21 @@ const YaschiWishlist = {
     saveItems: function(items) {
         localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(items));
         this.syncButtons();
+        this.updateBadge();
         window.dispatchEvent(new CustomEvent('yaschi:wishlist-updated', { detail: { items } }));
+    },
+
+    /**
+     * Update wishlist badge counters
+     */
+    updateBadge: function() {
+        const items = this.getItems();
+        const count = items.length;
+        const badges = document.querySelectorAll('#wishlist-count, .wishlist-badge');
+        badges.forEach(b => {
+            b.textContent = count;
+            b.style.display = count > 0 ? 'inline-flex' : 'none';
+        });
     },
 
     /**
@@ -109,4 +123,5 @@ const YaschiWishlist = {
 window.YaschiWishlist = YaschiWishlist;
 document.addEventListener('DOMContentLoaded', () => {
     YaschiWishlist.syncButtons();
+    YaschiWishlist.updateBadge();
 });

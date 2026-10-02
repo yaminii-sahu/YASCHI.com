@@ -15,32 +15,42 @@
     <!-- Unified Header -->
     <header class="site-header" id="siteHeader">
         <div class="top-nav">
-            <div class="header-left">
-                <a href="index.html" class="brand-logo-link" aria-label="Yaschi Home">
-                    <img src="Yaschi_logo.png" alt="Yaschi Couture" class="header-logo-img">
-                </a>
-                <div class="location-box" id="locationSelector" role="button" tabindex="0" aria-label="Delivery location selector">
-                    <i class="fa-solid fa-location-dot location-icon"></i>
-                    <div class="location-text">
-                        <span class="loc-sub">Deliver to</span>
-                        <span class="loc-main" id="userLocationText">India</span>
-                    </div>
+            <!-- Mobile Menu Hamburger Button -->
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="Yaschi Home">
+                <img src="Yaschi_logo.png" alt="Yaschi Logo" class="logo-img">
+            </a>
+
+            <!-- Deliver To Location -->
+            <div class="nav-location" id="locationSelector" title="Delivery Location" role="button" tabindex="0">
+                <span class="loc-label">Deliver to</span>
+                <div class="loc-country">
+                    <i class="fa-solid fa-location-dot loc-icon"></i>
+                    <span class="loc-name">India</span>
                 </div>
             </div>
 
-            <div class="search-container" role="search">
-                <div class="search-box">
-                    <select id="searchCategory" class="search-category-select" aria-label="Select department">
-                        <option value="all">All</option>
-                        <option value="corsets">Corsets</option>
-                        <option value="dresses">Dresses</option>
-                        <option value="skirts">Skirts</option>
-                        <option value="shrugs">Shrugs</option>
-                        <option value="tops">Tops & Tunics</option>
-                        <option value="bottoms">Bottoms</option>
-                        <option value="accessories">Accessories</option>
-                        <option value="makeup">Makeup</option>
-                    </select>
+            <!-- Search Bar -->
+            <div class="search-bar-wrapper">
+                <div class="search-bar">
+                    <div class="search-select-wrapper">
+                        <select class="search-select" id="searchCategory" aria-label="Search department">
+                            <option value="all">All</option>
+                            <option value="corsets">Corsets</option>
+                            <option value="dresses">Dresses</option>
+                            <option value="skirts">Skirts</option>
+                            <option value="shrugs">Shrugs</option>
+                            <option value="tops">Tops & Tunics</option>
+                            <option value="bottoms">Bottoms</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="makeup">Makeup</option>
+                        </select>
+                        <i class="fa-solid fa-caret-down select-arrow"></i>
+                    </div>
                     <input type="text" id="search" class="search-input" placeholder="Search Yaschi" aria-label="Search Yaschi">
                     <button type="button" id="searchButton" class="search-btn" aria-label="Search">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -48,18 +58,26 @@
                 </div>
             </div>
 
+            <!-- User Actions Right -->
             <div class="header-actions">
                 <a href="signin.html" class="action-item action-signin">
                     <span class="action-small">Hello, sign in</span>
                     <span class="action-main">Account & Lists <i class="fa-solid fa-caret-down mini-caret"></i></span>
                 </a>
+
                 <a href="returns.html" class="action-item action-returns">
                     <span class="action-small">Returns</span>
                     <span class="action-main">& Orders</span>
                 </a>
-                <a href="wishlist.html" class="action-item" title="Wishlist">
-                    <i class="fa-regular fa-heart" style="font-size:1.4rem; color:var(--color-blush);"></i>
+
+                <a href="wishlist.html" class="action-item action-wishlist" id="wishlistButton" aria-label="View Wishlist" title="Wishlist">
+                    <div class="wishlist-icon-box">
+                        <i class="fa-regular fa-heart wishlist-icon"></i>
+                        <span id="wishlist-count" class="cart-badge wishlist-badge" style="display:none;">0</span>
+                    </div>
+                    <span class="wishlist-text">Wishlist</span>
                 </a>
+
                 <a href="cart.html" class="action-item action-cart" id="cartButton" aria-label="View Shopping Cart">
                     <div class="cart-icon-box">
                         <i class="fa-solid fa-basket-shopping cart-icon"></i>
@@ -73,11 +91,12 @@
         <!-- Sub-navigation Bar -->
         <nav class="sub-nav" aria-label="Primary Navigation">
             <div class="sub-nav-left">
-                <button class="panel-all-btn" id="drawerOpenBtn">
+                <button class="panel-all-btn" id="drawerOpenBtn" title="Browse all categories & collections">
                     <i class="fa-solid fa-bars"></i>
                     <span>All</span>
                 </button>
                 <ul class="nav-links">
+                    <li><a href="shop.html?category=all" id="allCollectionBtn" class="nav-link-all">All Products</a></li>
                     <li><a href="deals.html">Today's Deals</a></li>
                     <li><a href="customer-service.html">Customer Service</a></li>
                     <li><a href="gift-cards.html">Gift Cards</a></li>
@@ -105,6 +124,7 @@
         <div class="drawer-content">
             <h3>Shop by Category</h3>
             <ul>
+                <li><a href="shop.html?category=all" id="drawerAllLink" style="font-weight:700; color:var(--color-blush);"><i class="fa-solid fa-border-all"></i> All Products</a></li>
                 <li><a href="corsets.html"><i class="fa-solid fa-angle-right"></i> Corsets</a></li>
                 <li><a href="dresses.html"><i class="fa-solid fa-angle-right"></i> Dresses</a></li>
                 <li><a href="skirts.html"><i class="fa-solid fa-angle-right"></i> Skirts</a></li>

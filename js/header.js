@@ -262,20 +262,41 @@
                 if (e.target === locModal) locModal.classList.remove('active');
             });
 
+            // Load saved pincode
+            try {
+                const savedPin = localStorage.getItem('yaschi_delivery_pincode');
+                if (savedPin) {
+                    const locName = document.querySelector('.loc-name');
+                    if (locName) locName.textContent = `India (${savedPin})`;
+                }
+            } catch (e) {}
+
             const btnApplyPin = document.getElementById('btnApplyPincode');
             const pinInput = document.getElementById('locPincodeInput');
-            if (btnApplyPin && pinInput) {
-                btnApplyPin.addEventListener('click', () => {
-                    const pin = pinInput.value.trim();
-                    if (pin.length >= 6) {
-                        const locName = document.querySelector('.loc-name');
-                        if (locName) locName.textContent = `India (${pin})`;
-                        locModal.classList.remove('active');
-                        if (window.YaschiCart && window.YaschiCart.showToast) {
-                            window.YaschiCart.showToast(`Delivery location updated to PIN ${pin}`);
-                        }
-                    } else {
-                        alert('Please enter a valid 6-digit PIN code.');
+            function applyPincode() {
+                if (!pinInput) return;
+                const pin = pinInput.value.trim();
+                if (pin.length >= 6) {
+                    try {
+                        localStorage.setItem('yaschi_delivery_pincode', pin);
+                    } catch (e) {}
+                    const locName = document.querySelector('.loc-name');
+                    if (locName) locName.textContent = `India (${pin})`;
+                    locModal.classList.remove('active');
+                    if (window.YaschiCart && window.YaschiCart.showToast) {
+                        window.YaschiCart.showToast(`Delivery location updated to PIN ${pin}`);
+                    }
+                } else {
+                    alert('Please enter a valid 6-digit PIN code.');
+                }
+            }
+
+            if (btnApplyPin) btnApplyPin.addEventListener('click', applyPincode);
+            if (pinInput) {
+                pinInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        applyPincode();
                     }
                 });
             }
@@ -302,6 +323,10 @@
             const isShopPage = window.location.pathname.endsWith('shop.html');
 
             if (isShopPage && window.YaschiShop && typeof window.YaschiShop.applyFilters === 'function') {
+                const newParams = new URLSearchParams();
+                if (query) newParams.set('search', query);
+                if (category && category !== 'all') newParams.set('category', category);
+                window.history.pushState(null, '', 'shop.html' + (newParams.toString() ? '?' + newParams.toString() : ''));
                 window.YaschiShop.applyFilters({ search: query, category: category });
             } else {
                 const params = new URLSearchParams();
@@ -309,6 +334,15 @@
                 if (category && category !== 'all') params.set('category', category);
                 window.location.href = 'shop.html' + (params.toString() ? '?' + params.toString() : '');
             }
+        }
+
+        if (searchCategory) {
+            searchCategory.addEventListener('change', () => {
+                const isShopPage = window.location.pathname.endsWith('shop.html');
+                if (isShopPage) {
+                    executeSearch();
+                }
+            });
         }
 
         if (searchButton) {
@@ -328,6 +362,24 @@
         }
 
         // =====================================================================
+        // 5b. "ALL" COLLECTION / ALL PRODUCTS HANDLERS
+        // =====================================================================
+        const allCollectionBtns = document.querySelectorAll('#allCollectionBtn, .panel-all-link, #drawerAllLink');
+        allCollectionBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const isShopPage = window.location.pathname.endsWith('shop.html');
+                if (isShopPage && window.YaschiShop && typeof window.YaschiShop.applyFilters === 'function') {
+                    e.preventDefault();
+                    if (searchCategory) searchCategory.value = 'all';
+                    if (searchInput) searchInput.value = '';
+                    window.history.pushState(null, '', 'shop.html');
+                    window.YaschiShop.applyFilters({ category: 'all', search: '' });
+                    closeDrawer();
+                }
+            });
+        });
+
+        // =====================================================================
         // 6. SMOOTH "BACK TO TOP"
         // =====================================================================
         const backToTopBtn = document.getElementById('backToTopBtn') || document.querySelector('.back-to-top');
@@ -339,10 +391,17 @@
         }
 
         // =====================================================================
-        // 7. SYNC BADGES
+        // 7. SYNC BADGES & EVENT LISTENERS
         // =====================================================================
         if (window.YaschiCart) window.YaschiCart.updateBadges();
-        if (window.YaschiWishlist) window.YaschiWishlist.syncButtons();
+        if (window.YaschiWishlist) {
+            window.YaschiWishlist.syncButtons();
+            window.YaschiWishlist.updateBadge();
+        }
+
+        window.addEventListener('yaschi:wishlist-updated', () => {
+            if (window.YaschiWishlist) window.YaschiWishlist.updateBadge();
+        });
     }
 
     if (document.readyState === 'loading') {
