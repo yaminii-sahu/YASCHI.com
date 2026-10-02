@@ -80,9 +80,38 @@
             document.body.style.overflow = '';
         }
 
-        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openDrawer);
+        if (drawerOpenBtn) {
+            drawerOpenBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openDrawer();
+            });
+        }
+        document.querySelectorAll('.panel-all-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openDrawer();
+            });
+        });
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openDrawer();
+            });
+        }
         if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
         if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+        // Auto close drawer when clicking any category or explore link inside
+        if (mobileDrawer) {
+            mobileDrawer.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeDrawer();
+                });
+            });
+        }
 
 
         // =====================================================================
@@ -395,22 +424,22 @@
         }
 
         // =====================================================================
-        // 5b. "ALL" COLLECTION / ALL PRODUCTS HANDLERS
+        // 5b. "ALL PRODUCTS" DIRECT LINK & FILTER RESET HANDLERS
         // =====================================================================
-        const allCollectionBtns = document.querySelectorAll('#allCollectionBtn, .panel-all-btn, #drawerOpenBtn, .panel-all-link, #drawerAllLink');
-        allCollectionBtns.forEach(btn => {
+        const allProductsLinks = document.querySelectorAll('#allCollectionBtn, .nav-link-all, #drawerAllLink');
+        allProductsLinks.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                closeDrawer();
-                closeCartDrawer();
                 const isShopPage = window.location.pathname.endsWith('shop.html');
                 if (isShopPage && window.YaschiShop && typeof window.YaschiShop.applyFilters === 'function') {
+                    e.preventDefault();
                     if (searchCategory) searchCategory.value = 'all';
                     if (searchInput) searchInput.value = '';
                     window.history.pushState(null, '', 'shop.html');
                     window.YaschiShop.applyFilters({ category: 'all', search: '', maxPrice: null });
+                    closeDrawer();
                 } else {
-                    window.location.href = 'shop.html?category=all';
+                    // Navigate directly to all products on other pages
+                    closeDrawer();
                 }
             });
         });
