@@ -233,7 +233,7 @@ if (!adminUser) {
     db.prepare(`
         INSERT INTO users (id, name, email, password_hash, role)
         VALUES ('user-admin-1', 'Yaschi Admin', 'admin@yaschi.com', ?, 'admin')
-    `).run(hashPassword('yaschi123'));
+    `).run(hashPassword(process.env.ADMIN_DEFAULT_PASSWORD || 'yaschi123'));
 }
 
 const demoSeller = db.prepare("SELECT * FROM sellers WHERE email = 'artisan@yaschi.com'").get();
